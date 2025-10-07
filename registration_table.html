@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Registration-form</h1>
+    <form action="" method="get" name="Registration-form">
+    <table border="2"  cellpadding="10" align="center">
+        <tr>
+            <th>Name</th>
+            <td colspan="4"> 
+                <label for="fname"> First name : </label>
+                <input type="text" name="fname" id="fname" placeholder="Enter First name" autocomplete="given-name"><br><br> 
+         
+                <label for="lname"> Last name : </label>
+                <input type="text" name="lname" id="lname" placeholder="Enter last name"> 
+            </td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td colspan="2"> <label for="male" ><input type="radio" name="gender" value="male" checked > Male </label></td>
+            <td colspan="2"> <label for="female"><input type="radio" name="gender" value="female"> Female</label> </td>
+        </tr>
+        <tr>
+            <th>Birthdate</th>
+            <td colspan="4" valign="middle">
+                 <input type="date" name="bod" id="bod">
+            </td>
+        </tr>
+        <tr>
+            <th>Mobile no.</th>
+            <td colspan="4">
+                <input type="tel" name="number" id="number" placeholder="Enter Mobile no." maxlength="10" minlength="10">
+            </td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td colspan="4">
+                <input type="email" name="email" id="email" placeholder="Enter Email">
+            </td>
+        </tr>
+         <tr>
+            <th>Password</th>
+            <td colspan="4">
+               <input type="password" name="password" id="password" placeholder="Enter Password" >
+            </td>
+        </tr>
+        <tr>
+            <th>Language</th>
+                <td>  <input type="checkbox" name="English" id="English" checked>English </td>  
+                <td>  <input type="checkbox" name="Hindi" id="Hindi">Hindi </td>
+                <td> <input type="checkbox" name="Gujarati" id="Gujarati">Gujarati</td>
+                <td> <input type="checkbox" name="french" id="french">French</td>            
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td colspan="4">
+                 <label for="address">Address :</label>
+                 <textarea name="address" id="address" cols="30" rows="1" ></textarea><br><br>
+           
+                <label for="city"> City : </label>
+                <select name="city" id="city"> 
+                            <option value="" disabled selected>Select city</option>
+                            <option value="Jamnagar">Jamnagar</option> 
+                            <option value="Surat"> Surat</option>
+                            <option value="Rajkot"> Rajkot</option>     
+                </select><br><br>
+
+                <label for="state"> State : </label>
+                <select name="state" id="state"> 
+                            <option value="" disabled selected>Select state</option>
+                            <option value="Gujarat">Gujarat</option> 
+                            <option value="assam"> Assam</option>
+                            <option value="goa"> Goa</option>     
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Hobby</th>
+            <td colspan="4">
+                <ul type="disc">
+                    <li>Coding</li>
+                    <li>Designing</li>
+                    <li>Reading</li>
+                <ul>
+            </td>
+        </tr>
+        <tr>
+            <th>File Upload</th>
+            <td colspan="4">
+                <input type="file" name="pdf" id="pdf" accept=".pdf">
+             </td>
+        </tr>
+        <tr align="center">
+            <td colspan="3"><button type="submit" >Register</button></td>
+            <td colspan="2"> <button type="reset">Clear</button></td>
+        </tr>
+
+    </table>
+    </form>
+</body>
+</html>
+
+
