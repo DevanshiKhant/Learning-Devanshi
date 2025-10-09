@@ -33,10 +33,10 @@ label::selection
     color: white;
 }
 
-input[type=text],input[type=tel],input[type=email],input[type=password],input[type=date]
+.input
 {
     width:95%;
-    margin-top: -25px;
+/* margin-top: -25px; */
     height: 15px;
     border: none;   
     border-bottom: 2px solid black;
@@ -47,7 +47,7 @@ input[type=text],input[type=tel],input[type=email],input[type=password],input[ty
 
 }
 
-input[type=text],input[type=tel],input[type=email],input[type=password],input[type=date]:hover
+.input:hover
 {
     height: 30px;
 }
@@ -68,18 +68,18 @@ label:hover p
     display: block;
 }
 
-input[type=radio]
+.radio
 {
     accent-color: #80797E ;
 }
 
-input[type=checkbox]
+.checkbox
 {
     accent-color: #80797E ;
     padding: 30%;
 }
 
-input[type=date]::-webkit-calendar-picker-indicator
+#bod::-webkit-calendar-picker-indicator
 {
     opacity: 1;
     cursor: pointer;
@@ -87,7 +87,7 @@ input[type=date]::-webkit-calendar-picker-indicator
     border-radius: 4px;
 }
 
-input[type=file]::file-selector-button
+#pdf::file-selector-button
 {
     font-weight: 100;
     background-color: white;
@@ -99,7 +99,7 @@ input[type=file]::file-selector-button
     width: 50%;
 }
 
-input[type=file]::file-selector-button:hover
+#pdf::file-selector-button:hover
 {
     font-weight: 100;
     background-color: #80797E;
@@ -109,7 +109,7 @@ input[type=file]::file-selector-button:hover
    
 }
 
-input[type=file]::first-line
+#pdf::first-line
 {
     color:#80797E;
     font-size: larger;
@@ -129,7 +129,7 @@ select
 {
     resize: vertical;
     width:95%;
-    padding: 3%;
+    padding: 3% ;
     height: 15px;
     border: none;   
     border-bottom: 2px solid black;
