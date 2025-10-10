@@ -1,0 +1,119 @@
+body
+{
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.nav
+{
+    margin: 0px;
+    background-color: #C8A2C8;
+    display: flex;
+    justify-content:space-between;
+    padding: 10px;
+    
+}
+
+.item
+{
+    margin-top: 10px;
+}
+
+.logo
+{
+    height: 30px;
+    width: 90px;
+
+}
+a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+
+}
+
+a:hover {
+    background-color:white; 
+    color: black;
+}
+
+
+.main-container
+{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 10px;
+}
+
+.container
+{
+    border: 2px solid black;
+    border-radius: 15px;
+    width:50%;
+    height: 500px;
+    padding: 5px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+  
+}
+
+.child1
+{
+    gap: 10px;
+    display: flex;
+    
+}
+
+.photo
+{
+    height:250px;
+    width: 190px;
+    border:1px solid white;
+    border-radius: 15px;
+}
+
+li
+{
+    list-style-type:square;
+    font-size:20px;
+
+}
+
+.child3
+{
+    display: flex;
+    flex-direction: column ;
+    height:100%;
+    justify-content: space-between;
+    margin-right:20px;
+    
+}
+
+.image
+{
+    height:155px;
+    width:190px;
+    border:2px solid white;
+    border-radius: 15px;
+}
+
+.child4
+{
+    display: flex;
+    flex-flow: column wrap;
+    height: 88%;
+    justify-content: space-evenly;
+}
+
+.child4 > li 
+{
+    font-size:20px;
+    list-style: none;
+    width:60%;
+    
+}
+
+
