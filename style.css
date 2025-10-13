@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css?family=Trirong");
+
+.main
+{
+    margin-left:30%;
+    background-color:#d6cdd3;
+    width: 40%;
+    padding : 0% 2% 1% 2%;
+    border-style:groove;
+    box-shadow: 5px 2px 2px gray;
+    
+}
+
+h1
+{
+    text-transform:capitalize;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px gray; 
+    font-family:"Trirong", serif;
+}
+
+label
+{
+   display: block;  
+   padding-bottom: 1%; 
+   font-size: larger;
+}
+
+label::selection
+{
+    background-color: #80797E;
+    color: white;
+}
+
+.input
+{
+    width:95%;
+/* margin-top: -25px; */
+    height: 15px;
+    border: none;   
+    border-bottom: 2px solid black;
+    border-radius: 1px;
+    background-color:#d6cdd3;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.input:hover
+{
+    height: 30px;
+}
+
+
+p
+{
+    background-color: #80797E;
+    color: white;
+    width: 65%;
+    margin: 5;
+    padding: 2px;
+    display: none;
+}
+
+label:hover p
+{
+    display: block;
+}
+
+.radio
+{
+    accent-color: #80797E ;
+}
+
+.checkbox
+{
+    accent-color: #80797E ;
+    padding: 30%;
+}
+
+#bod::-webkit-calendar-picker-indicator
+{
+    opacity: 1;
+    cursor: pointer;
+    padding-right: 3%;
+    border-radius: 4px;
+}
+
+#pdf::file-selector-button
+{
+    font-weight: 100;
+    background-color: white;
+    border: #80797E solid;
+    color: #80797E;
+    padding: 2%;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 50%;
+}
+
+#pdf::file-selector-button:hover
+{
+    font-weight: 100;
+    background-color: #80797E;
+    color:white;
+    padding: 2%;
+    cursor: pointer;
+   
+}
+
+#pdf::first-line
+{
+    color:#80797E;
+    font-size: larger;
+
+}
+
+select
+{
+    width:95%;
+    height: 30px;
+    border:none;
+    border-bottom:2px solid black ;
+    background-color: transparent;
+    font-family: 'Times New Roman', Times, serif;
+}   
+#address
+{
+    resize: vertical;
+    width:95%;
+    padding: 3% ;
+    height: 15px;
+    border: none;   
+    border-bottom: 2px solid black;
+    border-radius: 1px;
+    background-color:transparent;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container
+{
+    display: flex;
+    clear: both;
+    
+}
+
+.container button
+{
+    background-color:white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    width:100%;
+    padding:2%;
+    font-size:100%;
+    margin-right:5px;
+    border-radius: 4px;
+    cursor: pointer;   
+}
+
+.green
+{
+    border: #80797E solid;
+    color: #80797E;
+}
+
+.green:hover
+{
+    background-color: #80797E;
+    color: white;
+}

@@ -1,0 +1,67 @@
+h1
+{
+    text-align: center;
+}
+
+.grandparent-container
+{
+    background-color:black;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.heading
+{
+    width:100%;
+    color: white;
+}
+
+
+.parent-container
+{
+   
+    width: 360px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;    
+
+}
+
+.child-head
+{
+    color: white;
+    width: 331px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.child-container
+{
+    width:150px;
+    height:55px;
+    margin-bottom: 20px;
+}
+
+a:link, a:visited {
+  background-color: black;
+  color: rgb(214, 170, 200);
+  border: 1px solid rgb(214, 170, 200);
+  width:150px;
+  height:50px;
+  text-align:center;
+  text-decoration: none;
+  display: inline-block;
+  padding-top: 8px;
+}
+
+a:hover, a:active {
+  background-color:rgb(214, 170, 200);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
