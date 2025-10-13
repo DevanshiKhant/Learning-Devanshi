@@ -7,39 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    
-    <div class="main">
+    <div class="main" >
         <div>
         <h1>Registration-form</h1><br>
-        <form method="post">
+        <form method="get" id="myform">
         <label for="fname"> First name : </label>
-        <input type="text" name="fname" id="fname" class="input" autocomplete="given-name"><br><br> 
+        <input type="text" name="fname" id="fname" class="input" ><br><br> 
          
         <label for="lname"> Last name : </label>
-        <input type="text" name="lname" id="lname" class="input" > <br><br>
+        <input type="text" name="lname" id="lname" class="input" required> <br><br>
 
         <label for="gender"> Gender  :  </label>
-        <label for="male"><input type="radio" class="radio" name="gender" value="male"  checked> Male </label> 
-        <label for="female"><input type="radio" class="radio" name="gender" value="female"> Female</label><br>
+        <label for="male"><input type="radio" class="radio" id="male" name="gender" value="male"  checked> Male </label> 
+        <label for="female"><input type="radio" class="radio" id="female"  name="gender" value="female"> Female</label><br>
 
         <label for="bod">Birthdate :</label>
-        <input type="date" name="bod" class="input" id="bod"><br><br>
+        <input type="date" name="bod" class="input" id="bod" required><br><br>
 
         <label for="number"> Mobile No : </label>
-        <input type="tel" name="number" id="number" class="input" ><br><br>
+        <input type="tel" name="number" id="number" class="input" required><br><br>
 
         <label for="email"> Email : </label>
-        <input type="email" name="email" id="email" class="input"><br><br>
+        <input type="email" name="email" id="email" class="input" required><br><br>
 
-        <label for="password"> Password : <p>Please Enter Strong password</p> </label>
-        <input type="password" name="password" id="password" class="input">
+        <label for="password"> Password :  </label>
+        <input type="password" name="password" id="password" class="input" required>
         <br><br>
 
         <label for="lang"> Language : </label>
-        <input type="checkbox"  class="checkbox" name="English" id="English">English 
-        <input type="checkbox" class="checkbox" name="Hindi" id="Hindi">Hindi 
-        <input type="checkbox" class="checkbox" name="Gujrati" id="Gujrati">Gujrati <br><br>
+        <input type="checkbox"  class="checkbox" name="Language" id="English" value="English">English 
+        <input type="checkbox" class="checkbox" name="Language" id="Hindi" value="Hindi">Hindi 
+        <input type="checkbox" class="checkbox" name="Language" id="Gujrati" value="Gujarati">Gujarati <br><br>
 
         <label for="address">Address :</label>
         <textarea name="address" id="address" cols="30" rows="5"></textarea><br><br>
@@ -58,11 +56,35 @@
         </div>
          <div class="container">
             
-             <button type="submit" class="green">Register</button>
+             <button class="green" >Register</button>
              <button type="reset" class="green">Clear</button>
         </div>
               
     </form>
     </div>
+
+    <br><br>
+    <table id="datatable" border="1">
+        <tr><th>Fname</th>
+            <th>Lname</th>
+            <th>Gender</th>
+            <th>Bod</th>
+            <th>mobileno</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Language</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>File</th>
+         </tr>
+
+        <tbody>
+            
+        </tbody>
+    </table>
+    
+    <script src="script.js"></script>
+    
 </body>
+
 </html>
