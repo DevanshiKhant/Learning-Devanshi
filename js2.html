@@ -1,0 +1,75 @@
+<html>
+    <style>
+        body
+        {
+            margin: 50px;
+        }
+        .hello
+        {
+            border: 2px solid plum;
+            color: plum;
+            height: 50px;
+            width: 100px;
+            background-color: white;
+        }
+
+        .hello:hover{
+            background-color: plum;
+            color: black;
+            font-size: larger;
+        }
+
+         .hi
+        {
+            border: 2px solid greenyellow;
+            color: greenyellow;
+            height: 50px;
+            width: 100px;
+            background-color: white;
+        }
+        .hi:hover{
+            background-color: greenyellow;
+            color: black;
+            font-size: larger;
+        }
+
+         .hey
+        {
+            border: 2px solid palevioletred;
+            color: palevioletred;
+            height: 50px;
+            width: 100px;
+            background-color: white;
+        }
+        .hey:hover{
+            background-color: palevioletred;
+            color: black;
+            font-size: larger;
+        }
+        
+    </style>
+    <body>
+        <button class="hello" onclick="hello()"> press me </button><h1 id="btn1"></h1>
+        <button class="hi" onclick="hi()"> press me </button><h1 id="hi"></h1>
+        <button class="hey" onclick="hey()"> press me </button><h1 id="hey"></h1> 
+    </body>
+
+
+
+    <script>
+        function hello()
+        {
+             document.getElementById('btn1').innerHTML = "HELLO..";
+        }
+        function hi()
+        {
+             document.getElementById('hi').innerHTML = "Hiiii..";
+        }
+        function hey()
+        {
+             document.getElementById('hey').innerHTML = "Heyy..";
+        }
+
+
+    </script>
+</html>
