@@ -1,7 +1,7 @@
 document.querySelector("form").addEventListener("submit",function (submitForm)
  {
             submitForm.preventDefault();
-            const form = document.getElementById('myform');
+           const form = document.getElementById('myform');
 
             let fname = document.getElementById('fname').value;
             let lname = document.getElementById('lname').value;
