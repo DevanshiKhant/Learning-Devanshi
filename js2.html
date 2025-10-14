@@ -4,7 +4,7 @@
         {
             margin: 50px;
         }
-        .hello
+        #btn1
         {
             border: 2px solid plum;
             color: plum;
@@ -13,13 +13,15 @@
             background-color: white;
         }
 
-        .hello:hover{
+        #btn1:hover{
             background-color: plum;
             color: black;
             font-size: larger;
+            cursor: pointer;
+           
         }
 
-         .hi
+        #btn2
         {
             border: 2px solid greenyellow;
             color: greenyellow;
@@ -27,13 +29,15 @@
             width: 100px;
             background-color: white;
         }
-        .hi:hover{
+        
+        #btn2:hover{
             background-color: greenyellow;
             color: black;
             font-size: larger;
+            cursor: pointer;
         }
 
-         .hey
+        #btn3
         {
             border: 2px solid palevioletred;
             color: palevioletred;
@@ -41,35 +45,75 @@
             width: 100px;
             background-color: white;
         }
-        .hey:hover{
+
+        #btn3:hover{
             background-color: palevioletred;
             color: black;
             font-size: larger;
+            cursor: pointer;
         }
         
     </style>
     <body>
-        <button class="hello" onclick="hello()"> press me </button><h1 id="btn1"></h1>
-        <button class="hi" onclick="hi()"> press me </button><h1 id="hi"></h1>
-        <button class="hey" onclick="hey()"> press me </button><h1 id="hey"></h1> 
+        <h1 id="h1">welcome</h1>
+        <button id="btn1"> press me </button>
+        <button id="btn2" > press me </button>
+        <button id="btn3"> press me </button>
     </body>
 
 
 
     <script>
-        function hello()
-        {
-             document.getElementById('btn1').innerHTML = "HELLO..";
-        }
-        function hi()
-        {
-             document.getElementById('hi').innerHTML = "Hiiii..";
-        }
-        function hey()
-        {
-             document.getElementById('hey').innerHTML = "Heyy..";
-        }
+
+        const h1 = document.getElementById('h1');
+
+        const button1 =document.getElementById('btn1');
+        button1.addEventListener('click',function(){
+            h1.innerHTML = "HELLO..";
+            h1.style.border = " 2px solid gray";
+            h1.style.textAlign = 'center';
+            h1.style.backgroundColor = 'black';
+            h1.style.color = 'white';
+            button1.style.backgroundColor = 'black';
+            button1.style.borderColor = 'black';
+            button1.style.color = "white";
+            button1.style.fontSize = "20px";
+            button1.innerHTML = "Hello";
+            button1.classList.remove('active');
+
+        });      
+        
+            const button2 = document.getElementById('btn2');
+            button2.addEventListener('click',function(){
+                h1.innerHTML = "Hiiii.." ;
+                h1.style.border = " 2px solid black";
+                h1.style.textAlign = 'center';
+                h1.style.backgroundColor = 'skyblue';
+                h1.style.color = 'black';
+                button2.style.backgroundColor = 'skyblue';
+                button2.style.borderColor = 'skyblue';
+                button2.style.color = "black";
+                button2.style.fontSize = "20px";
+                button2.innerHTML = "Hii";
+
+            });
+            
+            
+            const button3 = document.getElementById('btn3');
+            button3.addEventListener('click',function(){
+                h1.innerHTML = "Heyy..";
+                h1.style.border = " 2px solid black";
+                h1.style.textAlign = 'center';
+                h1.style.backgroundColor = 'lavender';
+                h1.style.color = 'black';
+                button3.style.backgroundColor = 'lavender';
+                button3.style.borderColor = 'lavender';
+                button3.style.color = "black";
+                button3.style.fontSize = "20px";
+                button3.innerHTML = "Heyy";
+            });
+            
 
 
-    </script>
+            </script>
 </html>
