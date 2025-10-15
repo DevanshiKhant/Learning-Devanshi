@@ -1,17 +1,26 @@
 <html>
     <body>
  
+        <!-- createElement -->
         <button id="btn1"> createElement </button>
         <div id="container"></div> 
+
+        <!-- event delegation -->
         <button id="btn2"> event delegation</button>
         <ul id="ul"></ul>
 
+        <!-- fetch api -->
+        <p id="p"></p>
+        <p id="p1"></p>
+
+        <!-- session storage -->
+         <div id="storage"></div>
         
     </body>
 
     <script>
 
-
+        //create element
         const div = document.getElementById('container');
         const button = document.getElementById('btn1');
         button.addEventListener('click',function(){
@@ -22,6 +31,7 @@
             
         });
 
+        //event delegation
         const list = document.getElementById('ul');
         const button2 = document.getElementById('btn2');
         button2.addEventListener('click',function(){
@@ -36,6 +46,30 @@
             }
             list.appendChild(ul);
         });
+
+        //fetch method
+
+        let file = "fetch.txt"
+
+        fetch(file)
+        .then(x => x.text())
+        .then(y => document.getElementById('p').innerHTML = y)
+
+        // async & await
+
+        getText("fetch.txt");
+
+        async function getText(file) {
+            let x = await fetch(file);
+            let y = await x.text();
+             document.getElementById('p1').innerHTML = y;
+        }
+
+        //session storage 
+        sessionStorage.setItem('username','john');
+        const username = sessionStorage.getItem('username');
+    
+        document.getElementById('storage').innerHTML = username;
 
     </script>
 </html>
