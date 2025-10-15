@@ -70,4 +70,3 @@ const[one,two,three,...rest] = arr5;
 console.log(one);
 console.log(three);
 console.log(rest);
-
