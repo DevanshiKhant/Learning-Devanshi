@@ -15,10 +15,14 @@
 
         <!-- session storage -->
          <div id="storage"></div>
-        
+
+        <!-- local storage -->
+        <div id="local"></div>
+
+
     </body>
 
-    <script>
+    <script type="module">
 
         //create element
         const div = document.getElementById('container');
@@ -68,8 +72,18 @@
         //session storage 
         sessionStorage.setItem('username','john');
         const username = sessionStorage.getItem('username');
-    
         document.getElementById('storage').innerHTML = username;
+        sessionStorage.clear();
+
+        //local storage
+        localStorage.setItem('name' , 'deo');
+        const name = localStorage.getItem('name');
+        document.getElementById('local').innerHTML = name;
+
+        //import module
+        import hello,{num} from "./example_prog.js"
+        console.log(num);
+        hello();
 
     </script>
 </html>
