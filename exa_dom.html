@@ -1,0 +1,41 @@
+<html>
+    <body>
+ 
+        <button id="btn1"> createElement </button>
+        <div id="container"></div> 
+        <button id="btn2"> event delegation</button>
+        <ul id="ul"></ul>
+
+        
+    </body>
+
+    <script>
+
+
+        const div = document.getElementById('container');
+        const button = document.getElementById('btn1');
+        button.addEventListener('click',function(){
+       
+            const newElement = document.createElement('div');
+            newElement.innerHTML = "hello";
+            div.appendChild(newElement);
+            
+        });
+
+        const list = document.getElementById('ul');
+        const button2 = document.getElementById('btn2');
+        button2.addEventListener('click',function(){
+           
+            const ul = document.createElement('ul');            
+            
+            for (var i = 1; i <= 10; i++)
+            {
+                const li = document.createElement('li');
+                li.innerHTML = "This is line " + i;
+                ul.appendChild(li);
+            }
+            list.appendChild(ul);
+        });
+
+    </script>
+</html>
