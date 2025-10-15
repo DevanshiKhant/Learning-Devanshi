@@ -69,4 +69,65 @@ const arr5 = ["apple","banana","cherry"];
 const[one,two,three,...rest] = arr5;
 console.log(one);
 console.log(three);
-console.log(rest);
+
+
+// export and import module
+
+export let num = [1,2,3,4];
+
+export default function hello()
+{
+    console.log("hello world");
+}
+
+
+//class and inheritance
+
+class cat {
+    constructor(name){
+        this.name = name;
+    }
+
+    speak()
+    {
+        console.log(`${this.name} makes a noise`);
+    }
+}
+
+class lion extends cat{
+    speak(){
+        super.speak();
+        console.log(`${this.name} roars`);
+    
+    }
+}
+
+const l = new lion("lazzy");
+l.speak();
+
+
+//object immutability
+
+let freeze = {name : "john" , age : 20};
+//Object.freeze(freeze);
+freeze.name = "deo";
+console.log(freeze);
+
+
+//curring 
+
+function sum(a,b,c){
+    return a+b+c;    
+}
+
+console.log("regular function " ,sum(1,2,3));
+
+function curring(a){
+    return function(b)  {
+        return function(c){
+            return a+b+c;
+        }
+    }
+}
+
+console.log("curring function :",curring(1)(2)(3))
