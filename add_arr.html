@@ -1,0 +1,58 @@
+<html>
+    <body>
+        <h1>Add array element</h1>
+        <input type="number" placeholder="enter element" id="num">
+        <button id="btn1">PUSH</button>
+        <button id="btn2">POP</button>
+        <button id="btn3">UNSHIFT</button>
+        <button id="btn4">SHIFT</button>
+        <button id="btn5">LENGTH</button>
+
+        <p>current array : <span id="display"></span></p>
+        <p>length of array : <span id="length"></span></p>
+    </body>
+
+    <script>
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+        const btn3 = document.getElementById('btn3');
+        const btn4 = document.getElementById('btn4');
+        const btn5 = document.getElementById('btn5');
+        const display = document.getElementById('display');
+        const num = document.getElementById('num');
+        
+        let myarray = [];
+        function updatearray(){
+            display.innerHTML = JSON.stringify(myarray);
+        }
+
+        btn1.addEventListener('click',function(){
+            myarray.push(num.value);
+            num.value = '';
+            updatearray();
+        })
+
+        btn2.addEventListener('click',function(){
+            myarray.pop();
+            updatearray();
+        })
+
+        btn3.addEventListener('click', function(){
+            myarray.unshift(num.value);
+            num.value = '';
+            updatearray();
+        })
+
+        btn4.addEventListener('click',function(){
+            myarray.shift(num.value);
+            num.value = '';
+            updatearray();
+        })
+
+        btn5.addEventListener('click',function(){
+            const length = myarray.length;
+            document.getElementById('length').innerHTML = length
+        })
+        
+    </script>
+</html>
