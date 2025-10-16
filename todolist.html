@@ -1,0 +1,139 @@
+<html>
+
+    <style>
+
+        
+        .container
+        {
+            
+            padding: 20px;
+            border: 1px solid;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #inputValue
+        {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: plum;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        button:hover {
+            background-color: greenyellow;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+
+    </style>
+
+    <body>
+        <div class="container">
+             <h1>TO DO LIST</h1>
+            <p>Enter Item :</p><input type="text" id="inputValue">
+            <button id="pushButton" >PUSH</button>
+            <button id="popButton" >POP</button><br><br>
+            <h1>Insert  Item Table</h1>
+             <table id="datatable" border="1">
+                <thead>
+                     <td>index</td>
+                     <td>item</td>
+                 </thead>
+                <tbody> </tbody>
+            </table>
+       
+            <h1>Delete Item Table</h1>
+             <table id="deletetable" border="1">
+                <thead>
+                     <td>index</td>
+                     <td>item</td>
+                 </thead>
+                <tbody> </tbody>
+            </table>
+
+        </div>
+    </body>
+    <script>
+      
+    const inputValue = document.getElementById('inputValue');
+    const pushButton = document.getElementById('pushButton');
+    const popButton = document.getElementById('popButton');
+    const dataTableBody = document.querySelector('#datatable tbody');
+    const deletebody = document.querySelector('#deletetable tbody');
+
+    let data = []; 
+
+    function updatetable() {
+        dataTableBody.innerHTML = ''; 
+        data.forEach((item, index) => {
+            const row = dataTableBody.insertRow();
+            const secondrow = document.createElement("secondrow")
+            row.innerHTML =  `<tr>
+                    <td>${index}</td>
+                    <td>${item}</td>
+                </tr>`
+
+        });
+    }
+
+    pushButton.addEventListener('click', () => {
+        const value = inputValue.value.trim();
+            data.push(value);
+            inputValue.value = ''; 
+            updatetable();
+    });
+
+    popButton.addEventListener('click', () => {
+       
+        const indexString = prompt('Enter the index number to delete:');
+        const index = parseInt(indexString, 10);
+        
+        if(isNaN(index))
+        {
+            alert("please valid number");
+        }
+        else
+        {
+            const rmitem = data.splice(index, 1); 
+            deletebody.innerHTML = ''; 
+            rmitem.forEach((item, index) => {
+            const row = deletebody.insertRow();
+            const secondrow = document.createElement("secondrow")
+            row.innerHTML =  `<tr>
+                    <td>${index}</td>
+                    <td>${rmitem}</td>
+                </tr>`
+
+        });
+            updatetable();
+
+        }
+    });
+
+  
+
+    </script>
+</html>
