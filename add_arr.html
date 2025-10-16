@@ -7,9 +7,31 @@
         <button id="btn3">UNSHIFT</button>
         <button id="btn4">SHIFT</button>
         <button id="btn5">LENGTH</button>
+        <button id="btn6">SORT</button>
+        <button id="btn7">REVERSE</button>
+        <button id="btn8">MAX</button>
+        <button id="btn9">MIN</button>
+        <button id="btn10">INDEXOF</button>
+        <button id="btn11">LastIndexOf</button>
+        <button id="btn12">MAP</button>
+        <button id="btn13">REDUCE</button>
+        <button id="btn14">FILTER</button>
+        <button id="btn15">ENTRIES</button>
 
         <p>current array : <span id="display"></span></p>
         <p>length of array : <span id="length"></span></p>
+        <p>Sort the array : <span id="sort"></span></p>
+        <p>Reverse the array : <span id="reverse"></span></p>
+        <p>Maximum of array : <span id="max"></span></p>
+        <p>Minimum of array : <span id="min"></span></p>
+        <p>indexOf array : <span id="index"></span></p>
+        <p>LastindexOf array : <span id="LastIndexOf"></span></p>
+        <p>Map the array : <span id="map"></span></p>
+        <p>Reduce the array : <span id="reduce"></span></p>
+        <p>Filter the array : <span id="filter"></span></p>
+        <p>Entries of array : <br><span id="entry"></span></p>
+
+
     </body>
 
     <script>
@@ -18,15 +40,25 @@
         const btn3 = document.getElementById('btn3');
         const btn4 = document.getElementById('btn4');
         const btn5 = document.getElementById('btn5');
-        const display = document.getElementById('display');
+        const btn6 = document.getElementById('btn6');
+        const btn7 = document.getElementById('btn7');
+        const btn8 = document.getElementById('btn8');
+        const btn9 = document.getElementById('btn9');
+        const btn10 = document.getElementById('btn10');
+        const btn11 = document.getElementById('btn11');
+        const btn12 = document.getElementById('btn12');
+        const btn13 = document.getElementById('btn13');
+        const btn14 = document.getElementById('btn14');
+        const btn15 = document.getElementById('btn15');
         const num = document.getElementById('num');
         
         let myarray = [];
         function updatearray(){
             display.innerHTML = JSON.stringify(myarray);
         }
-
+        
         btn1.addEventListener('click',function(){
+            const display = document.getElementById('display');
             myarray.push(num.value);
             num.value = '';
             updatearray();
@@ -51,8 +83,66 @@
 
         btn5.addEventListener('click',function(){
             const length = myarray.length;
-            document.getElementById('length').innerHTML = length
+            document.getElementById('length').innerHTML = length;
         })
+        
+        btn6.addEventListener('click',function(){
+            const sort = myarray.sort(function(a,b) {return a-b;});
+            document.getElementById('sort').innerHTML = sort;
+        });
+
+        btn7.addEventListener('click',function(){
+            const Reverse = myarray.reverse();
+            document.getElementById('reverse').innerHTML = Reverse;
+        })  
+        
+        btn8.addEventListener('click',function(){
+            const num_arr = myarray.map(Number);
+            const max = Math.max(...num_arr);
+            document.getElementById('max').innerHTML = max;
+        })  
+        
+        btn9.addEventListener('click',function(){
+            const num_arr = myarray.map(Number);
+            const min = Math.min(...num_arr);
+            document.getElementById('min').innerHTML = min;
+        })
+        
+        btn10.addEventListener('click',function(){
+           const find = myarray.indexOf(num.value);
+            document.getElementById('index').innerHTML = find;
+        })
+
+        btn11.addEventListener('click',function(){
+           const lastindex = myarray.lastIndexOf(num.value) ;
+            document.getElementById('LastIndexOf').innerHTML = lastindex;
+        })
+
+        btn12.addEventListener('click',function(){
+           const map = myarray.map((num) => num*2) ;
+            document.getElementById('map').innerHTML = map;
+        })
+        
+        btn13.addEventListener('click',function(){
+            const array = myarray.map(Number);
+            const reduce = array.reduce((x,y=0) => x + y) ;
+            document.getElementById('reduce').innerHTML = reduce;
+        })
+
+        btn14.addEventListener('click',function(){
+            const array = myarray.map(Number);
+            const filter = array.filter((x) => x % 2 == 0) ;
+            document.getElementById('filter').innerHTML = filter;
+        })
+
+        btn15.addEventListener('click',function(){
+            const entry = myarray.entries();
+            for(let x of entry){
+            document.getElementById('entry').innerHTML += x + '<br>';
+            }
+        })
+
+     
         
     </script>
 </html>
