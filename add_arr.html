@@ -1,5 +1,44 @@
 <html>
+    <style>
+
+         .container
+        {
+            
+            padding: 20px;
+            border: 1px solid;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        #num , #number
+        {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+
+         button {
+            height: 20px;
+            background-color: plum;
+            color: white;
+            border: none;
+          
+            cursor: pointer;
+            margin-left: 5px;
+            
+        }
+
+        button:hover {
+            background-color: greenyellow;
+            color: black;
+        }
+    </style>
+
     <body>
+        <div class="container">
         <h1>Add array element</h1>
         <input type="number" placeholder="enter element" id="num"><br><br>
         <button id="btn1">PUSH</button>
@@ -20,7 +59,6 @@
         <button id="btn16">REPLACE</button>
 
         <p>current array : <span id="display"></span></p>
-        <p>length of array : <span id="length"></span></p>
         <p>Sort the array : <span id="sort"></span></p>
         <p>Reverse the array : <span id="reverse"></span></p>
         <p>Maximum of array : <span id="max"></span></p>
@@ -43,7 +81,7 @@
         <button id="button4">TRUNC</button>
         <p>Number : <span id="demo"></span></p>
         
-
+            </div>
     </body>
 
     <script>
