@@ -1,7 +1,7 @@
 <html>
     <body>
         <h1>Add array element</h1>
-        <input type="number" placeholder="enter element" id="num">
+        <input type="number" placeholder="enter element" id="num"><br><br>
         <button id="btn1">PUSH</button>
         <button id="btn2">POP</button>
         <button id="btn3">UNSHIFT</button>
@@ -17,6 +17,7 @@
         <button id="btn13">REDUCE</button>
         <button id="btn14">FILTER</button>
         <button id="btn15">ENTRIES</button>
+        <button id="btn16">REPLACE</button>
 
         <p>current array : <span id="display"></span></p>
         <p>length of array : <span id="length"></span></p>
@@ -30,7 +31,18 @@
         <p>Reduce the array : <span id="reduce"></span></p>
         <p>Filter the array : <span id="filter"></span></p>
         <p>Entries of array : <br><span id="entry"></span></p>
+        <p>Replace of array : <br><span id="replace"></span></p>
 
+
+
+        <h1>Maths Method</h1>
+        <input type="number" placeholder="enter number" id="number">
+        <button id="button1">ROUND</button>
+        <button id="button2">CEIL</button>
+        <button id="button3">FLOOR</button>
+        <button id="button4">TRUNC</button>
+        <p>Number : <span id="demo"></span></p>
+        
 
     </body>
 
@@ -50,15 +62,20 @@
         const btn13 = document.getElementById('btn13');
         const btn14 = document.getElementById('btn14');
         const btn15 = document.getElementById('btn15');
+        const btn16 = document.getElementById('btn16');
+
+        const button1 = document.getElementById('button1');
+        
         const num = document.getElementById('num');
+        const number = document.getElementById('number');
         
         let myarray = [];
         function updatearray(){
-            display.innerHTML = JSON.stringify(myarray);
+            const display = document.getElementById('display');
+             display.innerHTML = JSON.stringify(myarray);
         }
         
         btn1.addEventListener('click',function(){
-            const display = document.getElementById('display');
             myarray.push(num.value);
             num.value = '';
             updatearray();
@@ -142,7 +159,26 @@
             }
         })
 
+        btn16.addEventListener('click',function(){
+            myarray.splice(1,0,num.value);
+            document.getElementById('display').innerHTML = myarray;
+        });
+
      
-        
+        button1.addEventListener('click',function(){
+            document.getElementById('demo').innerHTML = Math.round(number.value);    
+        })
+
+        button2.addEventListener('click',function(){
+            document.getElementById('demo').innerHTML = Math.ceil(number.value);    
+        })
+
+        button3.addEventListener('click',function(){
+            document.getElementById('demo').innerHTML = Math.floor(number.value);    
+        })
+
+        button4.addEventListener('click',function(){
+            document.getElementById('demo').innerHTML = Math.trunc(number.value);    
+        })
     </script>
 </html>
