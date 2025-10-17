@@ -81,10 +81,26 @@
         <button id="button4">TRUNC</button>
         <p>Number : <span id="demo"></span></p>
         
-            </div>
+
+        <h1>String Method</h1>
+        <p>Enter String :</p><input type="text" id="inputValue">
+        <button id="showbtn" onclick="stringfunc()">SHOW</button>
+        <button id="lenbtn">LENGTH</button>
+        <button id="atbtn">CHARAT</button>
+        <button id="charcodebtn">CharCodeAt</button>
+
+
+        <p> String : <span id="show"></span></p>
+        <p>Length of string : <span id="length"></span></p>
+        <p>CharAt of string : <span id="charat"></span></p>
+        <p>CharCodeAt of string : <span id="charcodeat"></span></p>
+            
+        </div>
     </body>
 
     <script>
+
+        //array button
         const btn1 = document.getElementById('btn1');
         const btn2 = document.getElementById('btn2');
         const btn3 = document.getElementById('btn3');
@@ -102,10 +118,28 @@
         const btn15 = document.getElementById('btn15');
         const btn16 = document.getElementById('btn16');
 
+        //math method button
         const button1 = document.getElementById('button1');
         
+
+        //string method button
+        const lenbtn = document.getElementById('lenbtn');
+        const charatbtn = document.getElementById('atbtn');
+        const charcodeatbtn = document.getElementById('charcodebtn');
+        
+        //input value get
         const num = document.getElementById('num');
         const number = document.getElementById('number');
+        const string_in = document.getElementById('inputValue');
+
+        
+        
+        function stringfunc(){
+            const string = string_in.value;
+            document.getElementById('show').textContent = string;
+            
+           
+        }
         
         let myarray = [];
         function updatearray(){
@@ -218,5 +252,22 @@
         button4.addEventListener('click',function(){
             document.getElementById('demo').innerHTML = Math.trunc(number.value);    
         })
+
+        lenbtn.addEventListener('click',function(){
+            const string_in = document.getElementById('inputValue').value;
+            document.getElementById('length').innerHTML = string_in.length;
+        })
+
+        charatbtn.addEventListener('click',function(){
+            const string = string_in.value;
+            document.getElementById('charat').innerHTML = string.charAt(0);
+        });
+
+        charcodeatbtn.addEventListener('click',function(){
+            const string = string_in.value;
+            document.getElementById('charcodeat').innerHTML = string.charCodeAt(0);
+
+        })
+       
     </script>
 </html>
