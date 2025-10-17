@@ -1,0 +1,43 @@
+
+<html>
+    <body>
+        <h1>ajax example</h1>
+        <!-- responseText example -->
+        <button onclick="load()"> change content in text</button><br><br>
+        <b>file-content :</b><div id="demo"> </div><br>
+        <b>ALL Header :</b><div id="header"></div><br>
+        <b>particular Header :</b><div id="specific"></div>
+
+
+    </body>
+    <script>
+        function load()
+        {
+            const http = new XMLHttpRequest();
+
+            // onreadystatechange method use 
+            
+            // http.onreadystatechange = function(){
+            //     if(this.readyState === 4 && this.status === 200){
+            //      document.getElementById("demo").innerHTML = this.responseText;
+            //     }
+            //     else if(this.readyState === 4 && this.status !== 200)
+            //     {
+            //         console.log("fetch error",this.status,this.statusText);
+            //     }
+            // }
+
+            http.onload = function(){
+                document.getElementById("demo").innerHTML = this.responseText;
+                document.getElementById("header").innerHTML = this.getAllResponseHeaders();
+                document.getElementById("specific").innerHTML = this.getResponseHeader('content-type');
+            }
+            http.open("GET", "../fetch.txt");
+            http.send();
+
+            // http.open("POST", "../fetch.txt");
+            // http.send("fname=henry&lname=ford");
+        }
+
+    </script>
+</html>
