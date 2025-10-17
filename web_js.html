@@ -1,0 +1,194 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <link rel="stylesheet" href="web_js.css">
+    <header>
+         <nav class="nav">
+
+            <div class="item">  
+              🐾 <b>PetMet</b>
+             
+            </div>
+            <div class="item"> 
+                <a href="#"> HOME</a>
+                <a href="#"> ABOUT</a>
+                <a href="#"> CONTACT</a>
+                <a href="#"> BLOG</a> 
+            </div>
+        </nav>  
+    </header>
+
+    <body>
+        <div id="hero">
+            <div class="hero-content">
+                <h1>Welcome to PetMet</h1>
+                <p>Trusted Pet Services - Anytime, Anywhere 🐾</p>
+               
+                <button id="showtb" onclick="load()">Show the table</button>
+            </div>
+        </div>
+        <div>
+            <h1 id="th1"> - SHOW THE DETAILS -</h1>
+            <table id="datatable"></table>
+           
+        </div>
+    </body>
+
+    <script>
+        function load(){
+            document.getElementById('datatable').innerHTML = `            
+            <tr>
+                    <th>NO.</th>
+                    <th>NAME</th>
+                    <th>IMAGE</th>
+                    <th>PRICE</th>
+                    <th>QUANTITY</th>
+                    <th>TOTAL</th>
+                </tr>
+                 <tr>
+                    <td>1.</td>
+                    <td>Walking</td>
+                    <td><img src="photo1.jpg" alt="" ></td>
+                    <td>500</td>
+                    <td> <div id="quantity-selector1">
+                            <button  class="btn" id="decrement-btn"> <i class="fa fa-minus" aria-hidden="true"></i></button>
+                            <label id="quantity-label">0</label>
+                            <button  class="btn" id="increment-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
+                    </td>
+   
+                    <td>
+                        <P><span id="total1">0</span></p> 
+                    </td>
+                </tr>
+                 <tr>
+                    <td>2.</td>
+                    <td>Nail Trimming</td>
+                    <td><img src="photo2.jpg" alt="" ></td>
+                    <td>100</td>
+                    <td>
+                        <div id="quantity-selector2">
+                            <button  class="btn" id="decrement-btn2"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            <label id="quantity-label2">0</label>
+                            <button  class="btn" id="increment-btn2"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
+                    </td>
+                    <td>
+                        <P><span id="total2">0</span></p>    
+                    </td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Vaccination</td>
+                    <td><img src="photo3.jpg" alt="" ></td>
+                    <td>1000</td>
+                    <td>
+                        <div id="quantity-selector3">
+                            <button  class="btn" id="decrement-btn3"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            <label id="quantity-label3">0</label>
+                            <button  class="btn" id="increment-btn3"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
+                    </td>
+                    <td><P><span id="total3">0</span></p></td>
+               
+                </tr>`
+
+                //first selcetor
+                const quantityLabel = document.getElementById('quantity-label');
+                const decrementBtn = document.getElementById('decrement-btn');
+                const incrementBtn = document.getElementById('increment-btn');
+                const total1 = document.getElementById('total1');
+
+                let quantity = 0;
+              
+                decrementBtn.addEventListener('click', () => {
+                if (quantity > 0) { 
+                    quantity--;
+                    quantityLabel.innerHTML = quantity;
+                    updatetotal(quantity);
+                }
+                });
+
+                incrementBtn.addEventListener('click', () => {
+                quantity++;
+                quantityLabel.textContent = quantity;
+                updatetotal(quantity);
+                });
+
+                function updatetotal(quantity)
+                {
+                    const quan = parseInt(quantity);
+                    const t1 = (quan*500).toFixed(2);
+                    document.getElementById('total1').innerHTML = t1
+                }
+
+
+
+                //second selector
+                const quantityLabel2 = document.getElementById('quantity-label2');
+                const decrementBtn2 = document.getElementById('decrement-btn2');
+                const incrementBtn2 = document.getElementById('increment-btn2');
+                const total2 = document.getElementById('total2');
+                let quantity2 = 0;
+              
+
+                decrementBtn2.addEventListener('click', () => {
+                if (quantity2 > 0) { 
+                    quantity2--;
+                    quantityLabel2.innerHTML = quantity2;
+                    updatetotal2(quantity2);
+                }
+                });
+
+                incrementBtn2.addEventListener('click', () => {
+                quantity2++;
+                quantityLabel2.innerHTML = quantity2;
+                updatetotal2(quantity2)
+                });
+
+                 function updatetotal2(quantity2)
+                {
+                    const quan = parseInt(quantity2);
+                    const t1 = (quan*100).toFixed(2);
+                    document.getElementById('total2').innerHTML = t1
+                }
+
+
+                 //third selector
+                const quantityLabel3 = document.getElementById('quantity-label3');
+                const decrementBtn3 = document.getElementById('decrement-btn3');
+                const incrementBtn3 = document.getElementById('increment-btn3');
+                const total3 = document.getElementById('total3');
+                let quantity3 = 0;
+               
+
+                decrementBtn3.addEventListener('click', () => {
+                if (quantity3 > 0) { 
+                    quantity3--;
+                    quantityLabel3.innerHTML = quantity3;
+                    updatetotal3(quantity3);
+                }
+                });
+
+                incrementBtn3.addEventListener('click', () => {
+                quantity3++;
+                quantityLabel3.innerHTML = quantity3;
+                updatetotal3(quantity3);
+                });
+
+                function updatetotal3(quantity3)
+                {
+                    const quan = parseInt(quantity3);
+                    const t1 = (quan*1000).toFixed(2);
+                    document.getElementById('total3').innerHTML = t1
+                }
+
+        }
+
+
+
+
+
+    </script>    
+</html>
