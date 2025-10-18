@@ -1,4 +1,18 @@
 <html>
+
+<style>
+      button
+         {
+            background-color: #879bb1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+</style>
     <body>
  
         <!-- createElement -->
@@ -18,6 +32,9 @@
 
         <!-- local storage -->
         <div id="local"></div>
+
+        <!-- import module -->
+         <div id="import"></div>
 
 
     </body>
@@ -42,7 +59,7 @@
            
             const ul = document.createElement('ul');            
             
-            for (var i = 1; i <= 10; i++)
+            for (var i = 1; i <= 3; i++)
             {
                 const li = document.createElement('li');
                 li.innerHTML = "This is line " + i;
@@ -73,7 +90,7 @@
         sessionStorage.setItem('username','john');
         const username = sessionStorage.getItem('username');
         document.getElementById('storage').innerHTML = username;
-        sessionStorage.clear();
+        //sessionStorage.clear();
 
         //local storage
         localStorage.setItem('name' , 'deo');
@@ -82,8 +99,15 @@
 
         //import module
         import hello,{num} from "./example_prog.js"
-        console.log(num);
-        hello();
+         console.log(num);
+         hello();
 
+        //local storage
+        const fruit = ["apple", "banana", "papya" , "cherry"];
+        localStorage.setItem('fruit',JSON.stringify(fruit));
+        const saveditem = localStorage.getItem('fruit');
+        const item = JSON.parse(saveditem);
+        document.getElementById('local').innerHTML = item;
+        
     </script>
 </html>
