@@ -53,10 +53,11 @@
     const services = [
         { name: "Walking", price: 500, img: "photo1.jpg" },
         { name: "Nail Trimming", price: 100, img: "photo2.jpg" },
-        { name: "Vaccination", price: 1000, img: "photo3.jpg" }
+        { name: "Vaccination", price: 1000, img: "photo3.jpg" },{ name: "Vaccination", price: 1000, img: "photo3.jpg" }
     ];
 
     const tbody = document.getElementById("tbody");
+
     tbody.innerHTML = services.map((item, index) => `
         <tr>
             <td>${index + 1}</td>
@@ -72,7 +73,7 @@
             </td>
             <td><span class="total">0</span></td>
         </tr> `).join("");
-
+       
     document.getElementById("datatable").style.visibility = "visible";
 
     document.querySelectorAll("#tbody tr").forEach((row, index) => {
@@ -99,9 +100,30 @@
             quantity++;
             quantityLabel.textContent = quantity;
             updateTotal();
+            
         });
     });
+
+    const table = document.getElementById("tbody");
+    
+    const data =[];
+    for(let i=0 ; i < table.rows.length;i++){
+        const row = table.rows[i];
+        const rowdata  = {};
+        rowdata.name = row.cells[1].innerHTML;
+        rowdata.price = row.cells[3].innerHTML;
+        rowdata.quantity = row.cells[4].innerHTML;
+        rowdata.total = row.cells[5].innerHTML;
+        data.push(rowdata);
+    }
+    //console.log(data);
+    sessionStorage.setItem('rowdata',JSON.stringify(data));
 }
+
+
+
+
+
 </script>
 
 
