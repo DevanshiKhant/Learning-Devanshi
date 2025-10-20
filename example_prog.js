@@ -131,3 +131,57 @@ function curring(a){
 }
 
 console.log("curring function :",curring(1)(2)(3))
+
+
+//closures
+function myfunc(){
+    let count = 0;
+    return function(){
+        count++;
+        console.log(count);
+    }
+        return count;      
+}
+
+const counter = myfunc();
+counter();
+counter();
+counter();
+
+//parse and stringify JSON
+const arr12 = {name : "john" , age : 30 ,city :["newyork" , "boston" , "sanfrancisco"] };
+const myjson = JSON.stringify(arr12);
+console.log("json data :" , myjson);
+console.log(typeof myjson);
+
+
+
+const parsed = JSON.parse(myjson);
+console.log("parsed data :" , parsed);
+console.log(typeof parsed);
+
+for(const key in parsed){
+    console.log(`${key} : ${parsed[key]}`);
+}
+
+
+//rowjson
+
+const rawjson = JSON.rawJSON('"hello world"');
+console.log(JSON.stringify({value : rawjson}));
+
+
+//fetch api
+
+const request1 = new Request("https://example.org/post", {
+  method: "POST",
+  body: JSON.stringify({ username: "example" }),
+});
+
+const request2 = request1.clone();
+
+const response1 = await fetch(request1);
+console.log(response1.status);
+
+const response2 = await fetch(request2);
+console.log(response2.status);
