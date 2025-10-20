@@ -108,6 +108,9 @@
         const saveditem = localStorage.getItem('fruit');
         const item = JSON.parse(saveditem);
         document.getElementById('local').innerHTML = item;
-        
+
+
+        const obj = {name: "devanshi" , age: 21 , city: "surat"};
+        localStorage.setItem('obj',JSON.stringify(obj));
     </script>
 </html>
