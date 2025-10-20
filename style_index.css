@@ -44,6 +44,7 @@ h1
     width:150px;
     height:55px;
     margin-bottom: 20px;
+    
 }
 
 a:link, a:visited {
@@ -55,7 +56,7 @@ a:link, a:visited {
   text-align:center;
   text-decoration: none;
   display: inline-block;
-  padding-top: 8px;
+  padding: 8px;
 }
 
 a:hover, a:active {
