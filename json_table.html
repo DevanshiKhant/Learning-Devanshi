@@ -18,11 +18,11 @@
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function() {
             const myObj = JSON.parse(this.responseText);
-            let text = "<tbody>"
+            let text = "";
             for (let x in myObj) {
                     text += "<tr><td>" + myObj[x].id + "</td> <td>" + myObj[x].title + "</td><td>" + myObj[x].completed + "</td></tr>" ;
             }
-            text += "</tbody>"    
+               
              document.getElementById("demo").innerHTML = text;
     }
 
