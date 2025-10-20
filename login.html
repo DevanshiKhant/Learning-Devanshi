@@ -1,0 +1,51 @@
+<html>
+    <style>
+        form
+        {
+            margin-top: 20px;
+        }
+        input
+        {
+            padding: 8px;
+            width: 250px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button
+        {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+    </style>
+    <body>
+        <h2> Login Form </h2>
+        <form id="loginForm">
+            Email: <input type="email" id="email" required><br><br>
+            Password: <input type="password" id="password" required><br><br>
+            <button type="submit"> Login </button><br><br>
+            If you are new user <a href="reg_storage.html">Register here</a>
+    </body>
+    <script>
+        const form = document.getElementById('loginForm');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            let storedUser = JSON.parse(localStorage.getItem('registeredUser'));
+
+            if(storedUser && storedUser.email === email && storedUser.password === password) {
+                alert('Login successful!');
+            } else {
+                alert('Invalid email or password.');
+            }
+        });
+    </script>
+</html>
