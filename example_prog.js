@@ -171,7 +171,7 @@ const rawjson = JSON.rawJSON('"hello world"');
 console.log(JSON.stringify({value : rawjson}));
 
 
-//fetch api
+//fetch api - request 
 
 const request1 = new Request("https://example.org/post", {
   method: "POST",
@@ -185,3 +185,9 @@ console.log(response1.status);
 
 const response2 = await fetch(request2);
 console.log(response2.status);
+
+// fetch api - response
+const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+
+const data = await response.json();
+console.log(data);
