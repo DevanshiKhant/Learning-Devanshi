@@ -78,12 +78,15 @@
         start.addEventListener('click',function(){
             timer = true;
             stopwatch();
+            start.disabled = true
         });
         stop.addEventListener('click', function(){
             timer = false;
+            start.disabled = false
+
         });
         reset.addEventListener('click',function(){
-
+            start.disabled = false;
             timer = false;
             hour = 0;
             minutes = 0;
@@ -112,7 +115,7 @@
             if(timer){
                 milliseconds++;
 
-                if(milliseconds == 1000)
+                if(milliseconds == 100)
                 {
                     seconds++;
                     milliseconds = 0;
@@ -140,9 +143,10 @@
                 sec.innerHTML = secondsstring;
                 milisec.innerHTML = millisecondsstring;
 
-                setTimeout(stopwatch)
+                setTimeout(stopwatch ,10)
 
         }
     }
+
     </script>
 </html>
