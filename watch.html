@@ -1,0 +1,59 @@
+<html>
+    <style>
+        #demo
+        {
+            font-size: 24px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #333;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
+            letter-spacing: 2px;
+            
+        }
+        body
+        {
+            margin: 20px;
+            padding: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            width: fit-content;
+            height: fit-content;
+            border: 2px solid #ccc;
+        }
+      
+
+    </style>
+    <body>
+        <h2>Digital clock :-</h2>
+        <div id="demo"></div>
+    </body>
+    <script>
+        function updateTime(){
+                const d = new Date();
+                let hours = d.getHours();
+                let minutes = d.getMinutes();
+                let seconds = d.getSeconds(); 
+                let ampm = hours >= 12 ? 'PM' : 'AM';
+
+                hours = (hours < 10) ? "0" + hours : hours;
+                minutes = (minutes < 10) ? "0" + minutes : minutes; 
+                seconds = (seconds < 10) ? "0" + seconds : seconds;
+            
+
+                const time = hours + ":" + minutes + ":" + seconds;
+                document.getElementById("demo").innerHTML =  d.toLocaleString();
+
+                // const audio = new Audio('sound.mp3');
+                // audio.play();
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+
+
+      
+    </script>
+</html>
