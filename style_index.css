@@ -37,6 +37,12 @@ h1
     width: 331px;
     margin-bottom: 10px;
     text-align: center;
+    line-height: 25px;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 4px;
+    
+    
 }
 
 .child-container
@@ -44,19 +50,23 @@ h1
     width:150px;
     height:55px;
     margin-bottom: 20px;
+    text-align: center;
+    line-height: 25px;
     
 }
 
 a:link, a:visited {
-  background-color: black;
-  color: rgb(214, 170, 200);
-  border: 1px solid rgb(214, 170, 200);
-  width:150px;
-  height:50px;
-  text-align:center;
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px;
+    background-color: black;
+    color: rgb(214, 170, 200);
+    border: 1px solid rgb(214, 170, 200);
+    width:150px;
+    height:50px;
+    text-align:center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px;
+    border-radius: 4px;
+
 }
 
 a:hover, a:active {
