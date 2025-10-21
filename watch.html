@@ -23,12 +23,30 @@
             height: fit-content;
             border: 2px solid #ccc;
         }
-      
+        
+        button
+        {
+            margin: 20px;
+            height: 50px;
+            width: 100px;
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: larger;
+        }
 
+        button:hover{
+            background-color: rgb(38, 74, 38);
+            border-radius: 5px;
+        }
     </style>
     <body>
         <h2>Digital clock :-</h2>
         <div id="demo"></div>
+        <br>
+        <audio id="audioPlayer" src="sound.mp3"></audio>
+        <button id="playButton">Play Audio</button>
+        <button id="pauseButton">Pause Audio</button>
     </body>
     <script>
         function updateTime(){
@@ -46,14 +64,24 @@
                 const time = hours + ":" + minutes + ":" + seconds;
                 document.getElementById("demo").innerHTML =  d.toLocaleString();
 
-                // const audio = new Audio('sound.mp3');
-                // audio.play();
+             
         }
 
         updateTime();
         setInterval(updateTime, 1000);
 
+        let play = document.getElementById('playButton');
+        let pause = document.getElementById('pauseButton');
+        let audio = document.getElementById('audioPlayer');
+        
 
-      
+        play.addEventListener('click' , ()=>{
+            audio.play();
+        });
+
+        pause.addEventListener('click' , ()=>{
+            audio.pause();
+        });
+
     </script>
 </html>
