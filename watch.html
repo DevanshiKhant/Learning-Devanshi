@@ -1,5 +1,6 @@
 <html>
     <style>
+
         #demo
         {
             font-size: 24px;
@@ -28,17 +29,94 @@
         {
             margin: 20px;
             height: 50px;
-            width: 100px;
+            width: 200px;
             background-color: green;
             color: white;
             border: none;
             font-size: larger;
+           
         }
 
         button:hover{
             background-color: rgb(38, 74, 38);
             border-radius: 5px;
         }
+
+        .clock{
+            background-color: black;
+            width: 200px;
+            height: 200px;
+            border: 5px solid black;
+            border-radius: 50%;
+            position: relative;
+             margin: 0px 150px;
+
+        }
+
+        .hand
+        {
+            position: absolute;
+            background-color: white;
+            transform-origin: bottom center;
+        }
+
+        .number
+        {
+            position: absolute;
+            font-size: 24px;
+           
+             transform: translate(-50% , -50%);
+        }
+
+        .twelve{
+            top:8%;
+            left:50%;
+            color: deeppink;
+        }
+
+        .three
+        {
+            top:50%;
+            right:3%;
+            color: plum;
+        }
+        .six
+        {
+            top: 90%;
+            left: 50%;
+            color: coral;
+        }
+        .nine
+        {
+            top:50%;
+            left:9%;
+            color:aquamarine ;
+        }
+
+
+        .hour-hand
+        {
+            width: 4px;
+            height: 60px;
+            top: 40px;
+            left:calc(50% - 2px);
+        }
+        .minute-hand
+        {
+            width: 3px;
+            height: 80px;
+            top: 20px;
+            left:calc(50% - 1.5px);
+        }
+        .second-hand
+        {
+            width: 2px;
+            height: 90px;
+            top: 10px;
+            left:calc(50% - 1px);
+            background-color: brown;
+        }
+
     </style>
     <body>
         <h2>Digital clock :-</h2>
@@ -47,6 +125,16 @@
         <audio id="audioPlayer" src="sound.mp3"></audio>
         <button id="playButton">Play Audio</button>
         <button id="pauseButton">Pause Audio</button>
+
+         <div class="clock">
+            <div class="number twelve">12</div>
+            <div class="number three">3</div>
+            <div class="number nine">9</div>
+            <div class="number six">6</div>
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
     </body>
     <script>
         function updateTime(){
@@ -83,5 +171,29 @@
             audio.pause();
         });
 
+
+         function updateclock()
+            {
+                let date = new Date()
+                let hour = date.getHours();
+                let minute = date.getMinutes();
+                let second = date.getSeconds();
+
+                let hourhand = document.querySelector('.hour-hand');
+                let minutehand = document.querySelector('.minute-hand');
+                let secondhand = document.querySelector('.second-hand');
+
+                const seconddeg = (second / 60) * 360; 
+                const minutedeg = ((minute + second / 60)/60) * 360; 
+                const hourdeg = ((hour % 12 + minute /60) / 12) *360;
+
+                secondhand.style.transform = `rotate(${seconddeg}deg)`;
+                minutehand.style.transform = `rotate(${minutedeg}deg)`;
+                hourhand.style.transform = `rotate(${hourdeg}deg)`;
+
+            }
+
+            setInterval(updateclock , 1000);
+            updateclock();
     </script>
 </html>
