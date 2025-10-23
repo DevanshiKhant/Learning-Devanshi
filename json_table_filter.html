@@ -93,7 +93,7 @@
         }
         show.innerHTML = text;
 
- //radio button filter
+//radio button filter
  let survivedYes = document.getElementById('survivedYes');
  let survivedNo = document.getElementById('survivedNo');
 
@@ -109,6 +109,7 @@
      }
  });
 
+ 
  function filterTable(survived) {
      let rows = show.getElementsByTagName('tr');
      for (let i = 0; i < rows.length; i++) {
@@ -123,10 +124,12 @@
             }
      }
  }
+ 
 
-    //radio button filter for sex   
+ //radio button filter for sex   
     let maleRadio = document.getElementById('male');
     let femaleRadio = document.getElementById('female');
+    
     maleRadio.addEventListener('change', function() {
         if (this.checked) {
             filterTableBySex('male');
@@ -137,6 +140,7 @@
             filterTableBySex('female');
         }       
     });
+
     function filterTableBySex(sex) {
         let rows = show.getElementsByTagName('tr');
         for (let i = 0; i < rows.length; i++) {
@@ -151,21 +155,22 @@
             }
         }
     }
-
-//dropdown for age filter
+    
+    //dropdown for age filter
     let ageSelect = document.getElementById('ageSelect');
     ageSelect.addEventListener('change', function() {
         let selectedValue = this.value;
         filterTableByAge(selectedValue);
     });
-    function filterTableByAge(ageRange) {
-        let rows = show.getElementsByTagName('tr');
-        for (let i = 0; i < rows.length; i++) {
-            let cell = rows[i].getElementsByTagName('td')[5];
-            if (cell) {
-                let cellValue = parseFloat(cell.innerText);
+   
+function filterTableByAge(ageRange) {
+    let rows = show.getElementsByTagName('tr');
+    for (let i = 0; i < rows.length; i++) {
+        let cell = rows[i].getElementsByTagName('td')[5];
+        if (cell) {
+            let cellValue = parseFloat(cell.innerText);
                 let displayRow = false;
-
+                
                 if (ageRange === "0-10" && cellValue >= 0 && cellValue <= 10) {
                     displayRow = true;
                 } else if (ageRange === "11-20" && cellValue >= 11 && cellValue <= 20) {
@@ -179,15 +184,14 @@
                 } else if (ageRange === "51-60" && cellValue >= 51) {
                     displayRow = true;
                 } else if (ageRange === "") {
-                    displayRow = true; // Show all if no age range is selected
+                    displayRow = true; 
                 }
-
+                
                 rows[i].style.display = displayRow ? '' : 'none';
             }
         }
     }
-    
-    
 
-       </script>
+
+    </script>
 </html>
