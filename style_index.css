@@ -15,7 +15,7 @@ h1
     background-color:black;
     display: flex;
     flex-wrap: wrap;
-    margin: 10px;
+    margin: 0px;
     border-radius: 20px;
     justify-content: center;
 
@@ -50,7 +50,9 @@ h1
 
 .child-head
 {
-    color: white;
+    color: black;
+    height: fit-content;
+    background-color: rgb(214, 170, 200);
     width: 331px;
     margin-bottom: 10px;
     text-align: center;
