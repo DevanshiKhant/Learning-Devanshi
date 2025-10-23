@@ -1,6 +1,13 @@
 h1
 {
     text-align: center;
+    color: white;
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 .grandparent-container
@@ -10,12 +17,19 @@ h1
     flex-wrap: wrap;
     margin: 10px;
     border-radius: 20px;
+    justify-content: center;
+
+
 }
 
 .heading
 {
     width:100%;
     color: white;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 10px;
+   
 }
 
 
@@ -27,7 +41,10 @@ h1
     padding: 10px;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;    
+    justify-content: space-around;  
+    border: 1px solid rgb(214, 170, 200);
+    border-radius: 10px;  
+
 
 }
 
@@ -41,8 +58,8 @@ h1
     font-weight: bold;
     padding: 8px;
     border-radius: 4px;
-    
-    
+   
+
 }
 
 .child-container
@@ -52,6 +69,8 @@ h1
     margin-bottom: 20px;
     text-align: center;
     line-height: 25px;
+
+  
     
 }
 
@@ -71,7 +90,7 @@ a:link, a:visited {
 
 a:hover, a:active {
   background-color:rgb(214, 170, 200);
-  color: white;
+  color: black;
   border-radius: 4px;
   cursor: pointer;
 }
