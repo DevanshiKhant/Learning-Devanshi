@@ -32,7 +32,7 @@ header
 {
     height: 30px;
     width: 90px;
-
+    vertical-align: middle;
 
 }
 a{
@@ -45,8 +45,8 @@ a{
 a:hover {
     background-color:white; 
     color: black;
-}
 
+}
 
 .grand-container
 {

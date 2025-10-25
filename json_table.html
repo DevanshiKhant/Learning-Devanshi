@@ -1,0 +1,34 @@
+<html>
+    <body>
+       
+        <b>Table :</b><table border="1">
+            <tr>
+                <th>ID</th>
+                <th>TItle</th>
+                <th>COMPLETED</th>
+            </tr>
+            <tbody id="demo">
+            </tbody>
+        </table>
+    </body>
+
+<script>
+
+   
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function() {
+            const myObj = JSON.parse(this.responseText);
+            let text = "";
+            for (let x in myObj) {
+                    text += "<tr><td>" + myObj[x].id + "</td> <td>" + myObj[x].title + "</td><td>" + myObj[x].completed + "</td></tr>" ;
+            }
+               
+             document.getElementById("demo").innerHTML = text;
+    }
+
+xmlhttp.open("GET", "todos.json");
+
+xmlhttp.send();
+
+</script>
+</html>

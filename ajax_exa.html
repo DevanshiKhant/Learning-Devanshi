@@ -1,0 +1,64 @@
+
+<html>
+    <body>
+        <h1>ajax example</h1>
+        <!-- responseText example -->
+        <button onclick="load()"> change content in text</button><br><br>
+        <b>file-content :</b><div id="demo1"> </div><br>
+        <b>ALL Header :</b><div id="header"></div><br>
+        <b>particular Header :</b><div id="specific"></div><br>
+        <b>table :</b><table id="demo" border="1"></table>
+
+
+    </body>
+    <script>
+        function load()
+        {
+            const http = new XMLHttpRequest();
+            const xhttp = new XMLHttpRequest();
+
+            
+            http.onload = function(){
+                document.getElementById("demo1").innerHTML = this.responseText;
+                document.getElementById("header").innerHTML = this.getAllResponseHeaders();
+                document.getElementById("specific").innerHTML = this.getResponseHeader('content-type');
+
+            }
+            
+            xhttp.onload = function(){
+                const xmldoc = xhttp.responseXML;
+                const cd = xmldoc.getElementsByTagName("CD");
+                myfunction(cd);
+
+            }
+
+            http.open("GET", "../fetch.txt");
+            http.send();
+
+            xhttp.open("GET", "cd_catalog.xml");
+            xhttp.send();
+
+        
+        }
+        
+        function myfunction(cd){
+            let table = "<tr><th>Artist</th><th>Title</th></tr>";
+            for(let i=0; i < cd.length ; i++){
+                table += "<tr><td>"+ cd[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue + "</td><td>" + cd[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue + "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = table;
+        }
+
+        // onreadystatechange method use 
+        
+        // http.onreadystatechange = function(){
+        //     if(this.readyState === 4 && this.status === 200){
+        //      document.getElementById("demo").innerHTML = this.responseText;
+        //     }
+        //     else if(this.readyState === 4 && this.status !== 200)
+        //     {
+        //         console.log("fetch error",this.status,this.statusText);
+        //     }
+        // }
+    </script>
+</html>

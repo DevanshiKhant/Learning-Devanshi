@@ -1,0 +1,116 @@
+<html>
+
+<style>
+      button
+         {
+            background-color: #879bb1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+</style>
+    <body>
+ 
+        <!-- createElement -->
+        <button id="btn1"> createElement </button>
+        <div id="container"></div> 
+
+        <!-- event delegation -->
+        <button id="btn2"> event delegation</button>
+        <ul id="ul"></ul>
+
+        <!-- fetch api -->
+        <p id="p"></p>
+        <p id="p1"></p>
+
+        <!-- session storage -->
+         <div id="storage"></div>
+
+        <!-- local storage -->
+        <div id="local"></div>
+
+        <!-- import module -->
+         <div id="import"></div>
+
+
+    </body>
+
+    <script type="module">
+
+        //create element
+        const div = document.getElementById('container');
+        const button = document.getElementById('btn1');
+        button.addEventListener('click',function(){
+       
+            const newElement = document.createElement('div');
+            newElement.innerHTML = "hello";
+            div.appendChild(newElement);
+            
+        });
+
+        //event delegation
+        const list = document.getElementById('ul');
+        const button2 = document.getElementById('btn2');
+        button2.addEventListener('click',function(){
+           
+            const ul = document.createElement('ul');            
+            
+            for (var i = 1; i <= 3; i++)
+            {
+                const li = document.createElement('li');
+                li.innerHTML = "This is line " + i;
+                ul.appendChild(li);
+            }
+            list.appendChild(ul);
+        });
+
+        //fetch method
+
+        let file = "../fetch.txt"
+
+        fetch(file)
+        .then(x => x.text())
+        .then(y => document.getElementById('p').innerHTML = y)
+
+        // async & await
+
+        getText("../fetch.txt");
+
+        async function getText(file) {
+            let x = await fetch(file);
+            let y = await x.text();
+             document.getElementById('p1').innerHTML = y;
+        }
+
+        //session storage 
+        sessionStorage.setItem('username','john');
+        const username = sessionStorage.getItem('username');
+        document.getElementById('storage').innerHTML = username;
+        //sessionStorage.clear();
+
+        //local storage
+        localStorage.setItem('name' , 'deo');
+        const name = localStorage.getItem('name');
+        document.getElementById('local').innerHTML = name;
+
+        //import module
+        import hello,{num} from "./example_prog.js"
+         console.log(num);
+         hello();
+
+        //local storage
+        const fruit = ["apple", "banana", "papya" , "cherry"];
+        localStorage.setItem('fruit',JSON.stringify(fruit));
+        const saveditem = localStorage.getItem('fruit');
+        const item = JSON.parse(saveditem);
+        document.getElementById('local').innerHTML = item;
+
+
+        const obj = {name: "devanshi" , age: 21 , city: "surat"};
+        localStorage.setItem('obj',JSON.stringify(obj));
+    </script>
+</html>

@@ -1,0 +1,152 @@
+<html>
+    <style>
+         #demo
+        {
+            font-size: 24px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #333;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
+            letter-spacing: 2px;
+            
+        }
+        body
+        {
+            margin: 20px;
+            padding: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            width: fit-content;
+            height: fit-content;
+            border: 2px solid #ccc;
+        }
+        .btn
+        {
+            margin: 20px;
+            height: 50px;
+            width: 100px;
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: larger;
+        }
+        #stop
+        {
+            background-color:tomato;
+        }
+        #reset
+        {
+            background-color:blue;
+        }
+
+        .btn:hover{
+            color:black;
+            border-radius: 5px;
+        }
+    </style>
+    <body>
+       <h2>stopwatch :-</h2>
+        <div id="demo">
+            <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">00</span>
+        </div>
+        <button id="start" class="btn">Start</button>
+        <button id="stop" class="btn">Stop</button>
+        <button id="reset" class="btn">Reset</button>
+        <button id="laps" class="btn">Laps</button>
+        <div id="demo"><span id="timeline"></span></div> 
+        
+    </body>
+    <script>
+        let start = document.getElementById('start');
+        let stop = document.getElementById('stop');
+        let reset = document.getElementById('reset');
+        let hr = document.getElementById('hours');
+        let min = document.getElementById('minutes');
+        let sec = document.getElementById('seconds');
+        let milisec = document.getElementById('milliseconds');
+
+        let hours = '0';
+        let minutes = '0';
+        let seconds = '0';
+        let milliseconds ='0';
+
+        let lap = [];
+
+        start.addEventListener('click',function(){
+            timer = true;
+            stopwatch();
+            start.disabled = true
+        });
+        stop.addEventListener('click', function(){
+            timer = false;
+            start.disabled = false
+
+        });
+        reset.addEventListener('click',function(){
+            start.disabled = false;
+            timer = false;
+            hour = 0;
+            minutes = 0;
+            seconds = 0;
+            milliseconds = 0;
+            document.getElementById('hours').innerHTML = "00";
+            document.getElementById('minutes').innerHTML = "00";
+            document.getElementById('seconds').innerHTML = "00";
+            document.getElementById('milliseconds').innerHTML = "00";
+            
+        });
+
+        laps.addEventListener('click',function(){
+           
+            const newElement = document.createElement('timeline');
+            let store =  `${hr.innerHTML}:${min.innerHTML}:${sec.innerHTML}:${milisec.innerHTML}`;
+            newElement.innerHTML = `<br>${store}` ;
+            timeline.appendChild(newElement);
+            lap.push(store);  
+            localStorage.setItem('timeline', JSON.stringify(lap));
+           
+
+        })
+
+        function stopwatch(){
+            if(timer){
+                milliseconds++;
+
+                if(milliseconds == 100)
+                {
+                    seconds++;
+                    milliseconds = 0;
+                }   
+
+                if(seconds == 10)
+                {
+                    minutes++;
+                    seconds = 0;
+                }
+                if(minutes == 60)
+                {
+                    hours++;
+                    minutes = 0;
+                    seconds = 0;
+                }
+
+                hoursstring = (hours < 10) ? "0" + hours : hours;
+                minutesstring = (minutes < 10) ? "0" + minutes : minutes; 
+                secondsstring = (seconds < 10) ? "0" + seconds : seconds;
+                millisecondsstring = (milliseconds < 10) ? "0" + milliseconds : milliseconds;
+
+                hr.innerHTML = hoursstring;
+                min.innerHTML = minutesstring;
+                sec.innerHTML = secondsstring;
+                milisec.innerHTML = millisecondsstring;
+
+                setTimeout(stopwatch ,10)
+
+        }
+    }
+
+    </script>
+</html>

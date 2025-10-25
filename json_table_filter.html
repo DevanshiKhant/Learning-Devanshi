@@ -1,0 +1,197 @@
+<html>
+    <style>
+        h1 {
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #333;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
+            letter-spacing: 2px;
+
+        }
+        table {
+            border: 2px solid white;
+            width: 100%;
+            
+        }
+
+        th
+        {
+            background-color: #f2f2f2;
+            color: black;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            width: 100px;
+            text-align: center;
+           
+        }
+        td
+        {
+                border: 1px solid #e8e8e8;
+                padding: 5px;
+                text-align: center;      
+        }
+
+        
+
+    </style>
+    <body>
+        <h1>json to table with filter</h1>
+        <table >
+            <tr>
+                <th>PassengerId</th>
+                <th>Survived <br>
+                    <input type="radio" name="survived" id="survivedYes" value="1">1 <br>
+                    <input type="radio" name="survived" id="survivedNo" value="0">0
+                </th>
+                <th>Pclass</th>
+                <th>Name</th>
+                <th>Sex
+                    <br>
+                    <input type="radio" name="sex" id="male" value="male">Male <br>
+                    <input type="radio" name="sex" id="female" value="female">Female
+                </th>
+                <th>Age
+                    <br>
+                        <select name="age" id="ageSelect">
+                            <option value="">Select Age </option>
+                            <option value="0-10">0 - 10</option>
+                            <option value="11-20">11 - 20</option>
+                            <option value="21-30">21 - 30</option>
+                            <option value="31-40">31 - 40</option>
+                            <option value="41-50">41 - 50</option>
+                            <option value="51-60">51 - above</option>
+                        </select>
+                       
+                </th>
+                <th> siblings / spouses</th>
+                <th> parents / children</th>
+                <th>Ticket</th>
+                <th>Fare</th>
+                <th>Cabin</th>
+               
+            </tr>
+            <tbody id="demo"></tbody>
+        </table>
+        
+    </body>
+    <script type="module">
+        import jsondata from "./t2.json" with {type : "json"};
+        let show = document.getElementById('demo');
+       
+
+        let data = JSON.stringify(jsondata)
+        let json = JSON.parse(data);
+        
+        let text = "";
+        for (let x in json){
+            text += "<tr><td>" + json[x].PassengerId + "</td><td>" + json[x].Survived + "</td><td>" + json[x].Pclass +"</td><td>" + json[x].Name + "</td><td>" + json[x].Sex + "</td><td>"  + json[x].Age + "</td><td>"+ json[x].SibSp + "</td><td>"  + json[x].Parch + "</td><td>"  + json[x].Ticket + "</td><td>" + json[x].Fare + "</td><td>"  + json[x].Cabin + "</td></tr>"  ;                 
+        }
+        show.innerHTML = text;
+
+//radio button filter
+ let survivedYes = document.getElementById('survivedYes');
+ let survivedNo = document.getElementById('survivedNo');
+
+ survivedYes.addEventListener('change', function() {
+     if (this.checked) {
+         filterTable(1);
+     }
+ });
+
+ survivedNo.addEventListener('change', function() {
+     if (this.checked) {
+         filterTable(0);
+     }
+ });
+
+ 
+ function filterTable(survived) {
+     let rows = show.getElementsByTagName('tr');
+     for (let i = 0; i < rows.length; i++) {
+         let cell = rows[i].getElementsByTagName('td')[1];
+            if (cell) {
+                let cellValue = cell.innerText;
+                if (parseInt(cellValue) === survived) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+     }
+ }
+ 
+
+ //radio button filter for sex   
+    let maleRadio = document.getElementById('male');
+    let femaleRadio = document.getElementById('female');
+    
+    maleRadio.addEventListener('change', function() {
+        if (this.checked) {
+            filterTableBySex('male');
+        }               
+    });
+    femaleRadio.addEventListener('change', function() {
+        if (this.checked) {
+            filterTableBySex('female');
+        }       
+    });
+
+    function filterTableBySex(sex) {
+        let rows = show.getElementsByTagName('tr');
+        for (let i = 0; i < rows.length; i++) {
+            let cell = rows[i].getElementsByTagName('td')[4];
+            if (cell) {
+                let cellValue = cell.innerText;
+                if (cellValue === sex) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+    }
+    
+    //dropdown for age filter
+    let ageSelect = document.getElementById('ageSelect');
+    ageSelect.addEventListener('change', function() {
+        let selectedValue = this.value;
+        filterTableByAge(selectedValue);
+    });
+   
+function filterTableByAge(ageRange) {
+    let rows = show.getElementsByTagName('tr');
+    for (let i = 0; i < rows.length; i++) {
+        let cell = rows[i].getElementsByTagName('td')[5];
+        if (cell) {
+            let cellValue = parseFloat(cell.innerText);
+                let displayRow = false;
+                
+                if (ageRange === "0-10" && cellValue >= 0 && cellValue <= 10) {
+                    displayRow = true;
+                } else if (ageRange === "11-20" && cellValue >= 11 && cellValue <= 20) {
+                    displayRow = true;
+                } else if (ageRange === "21-30" && cellValue >= 21 && cellValue <= 30) {
+                    displayRow = true;
+                } else if (ageRange === "31-40" && cellValue >= 31 && cellValue <= 40) {
+                    displayRow = true;
+                } else if (ageRange === "41-50" && cellValue >= 41 && cellValue <= 50) {
+                    displayRow = true;
+                } else if (ageRange === "51-60" && cellValue >= 51) {
+                    displayRow = true;
+                } else if (ageRange === "") {
+                    displayRow = true; 
+                }
+                
+                rows[i].style.display = displayRow ? '' : 'none';
+            }
+        }
+    }
+
+
+    </script>
+</html>

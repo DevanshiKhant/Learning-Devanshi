@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>
+            Module Import JSON Example use of map and reduce functions
+        </title>
+    </head>
+    <style>
+
+        .switch
+        {
+            display:block;
+            position: relative;
+            width: 60px;
+            height: 34px;
+        }
+    
+        .slider
+        {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: red;
+            border-radius: 24px;
+        }
+        .slider:before
+        {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        input:checked + .slider
+        {
+            background-color: green;
+        }
+        input:checked + .slider:before
+        {
+            transform: translateX(26px);
+        }
+    </style>
+    <body>
+        <div>
+            <h3>Show true result turn on :-</h3>
+            <label class="switch">
+                <input type="checkbox" id="togBtn">
+                <span class="slider"></span>
+            </label><br>
+       </div>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Completed</th>
+            </tr>
+            <tbody id="demo"></tbody>
+        </table>
+        
+    </body>
+    <script type="module">
+        import jsondata from "./todos.json" with {type : "json"};
+        let show = document.getElementById('demo');
+        let toggle = document.getElementById('togBtn');
+
+        let data = JSON.stringify(jsondata)
+        let json = JSON.parse(data);
+        
+        let text = "";
+        for (let x in json){
+            text += "<tr><td>" + json[x].id + "</td> <td>" + json[x].title + "</td><td>" + json[x].completed + "</td></tr>" ;                 
+        }
+        show.innerHTML = text;
+        
+        toggle.addEventListener('click',function(){
+            if(toggle.checked){
+                let completedTrue = json.filter(item => item.completed === true);
+                let text = "";
+                for (let x in completedTrue) {
+                    text += "<tr><td>" + completedTrue[x].id + "</td> <td>" + completedTrue[x].title + "</td><td>" + completedTrue[x].completed + "</td></tr>" ;
+                }
+                show.innerHTML = text;
+                return;
+            }
+            else{
+                let completedFalse = json.filter(item => item.completed === false);
+                let text = "";
+                for (let x in completedFalse){
+                    text += "<tr><td>" + completedFalse[x].id + "</td> <td>" + completedFalse[x].title + "</td><td>" + completedFalse[x].completed + "</td></tr>" ;                 
+                }
+                show.innerHTML = text;
+                return;
+            }
+           
+        })   
+        
+       
+    </script>
+</html>
