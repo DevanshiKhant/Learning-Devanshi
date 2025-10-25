@@ -1,0 +1,273 @@
+<html>
+    <style>
+
+         .container
+        {
+            
+            padding: 20px;
+            border: 1px solid;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        #num , #number
+        {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+
+         button {
+            height: 20px;
+            background-color: plum;
+            color: white;
+            border: none;
+          
+            cursor: pointer;
+            margin-left: 5px;
+            
+        }
+
+        button:hover {
+            background-color: greenyellow;
+            color: black;
+        }
+    </style>
+
+    <body>
+        <div class="container">
+        <h1>Add array element</h1>
+        <input type="number" placeholder="enter element" id="num"><br><br>
+        <button id="btn1">PUSH</button>
+        <button id="btn2">POP</button>
+        <button id="btn3">UNSHIFT</button>
+        <button id="btn4">SHIFT</button>
+        <button id="btn5">LENGTH</button>
+        <button id="btn6">SORT</button>
+        <button id="btn7">REVERSE</button>
+        <button id="btn8">MAX</button>
+        <button id="btn9">MIN</button>
+        <button id="btn10">INDEXOF</button>
+        <button id="btn11">LastIndexOf</button>
+        <button id="btn12">MAP</button>
+        <button id="btn13">REDUCE</button>
+        <button id="btn14">FILTER</button>
+        <button id="btn15">ENTRIES</button>
+        <button id="btn16">REPLACE</button>
+
+        <p>current array : <span id="display"></span></p>
+        <p>Sort the array : <span id="sort"></span></p>
+        <p>Reverse the array : <span id="reverse"></span></p>
+        <p>Maximum of array : <span id="max"></span></p>
+        <p>Minimum of array : <span id="min"></span></p>
+        <p>indexOf array : <span id="index"></span></p>
+        <p>LastindexOf array : <span id="LastIndexOf"></span></p>
+        <p>Map the array : <span id="map"></span></p>
+        <p>Reduce the array : <span id="reduce"></span></p>
+        <p>Filter the array : <span id="filter"></span></p>
+        <p>Entries of array : <br><span id="entry"></span></p>
+        <p>Replace of array : <br><span id="replace"></span></p>
+
+
+
+        <h1>Maths Method</h1>
+        <input type="number" placeholder="enter number" id="number">
+        <button id="button1">ROUND</button>
+        <button id="button2">CEIL</button>
+        <button id="button3">FLOOR</button>
+        <button id="button4">TRUNC</button>
+        <p>Number : <span id="demo"></span></p>
+        
+
+        <h1>String Method</h1>
+        <p>Enter String :</p><input type="text" id="inputValue">
+        <button id="showbtn" onclick="stringfunc()">SHOW</button>
+        <button id="lenbtn">LENGTH</button>
+        <button id="atbtn">CHARAT</button>
+        <button id="charcodebtn">CharCodeAt</button>
+
+
+        <p> String : <span id="show"></span></p>
+        <p>Length of string : <span id="length"></span></p>
+        <p>CharAt of string : <span id="charat"></span></p>
+        <p>CharCodeAt of string : <span id="charcodeat"></span></p>
+            
+        </div>
+    </body>
+
+    <script>
+
+        //array button
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+        const btn3 = document.getElementById('btn3');
+        const btn4 = document.getElementById('btn4');
+        const btn5 = document.getElementById('btn5');
+        const btn6 = document.getElementById('btn6');
+        const btn7 = document.getElementById('btn7');
+        const btn8 = document.getElementById('btn8');
+        const btn9 = document.getElementById('btn9');
+        const btn10 = document.getElementById('btn10');
+        const btn11 = document.getElementById('btn11');
+        const btn12 = document.getElementById('btn12');
+        const btn13 = document.getElementById('btn13');
+        const btn14 = document.getElementById('btn14');
+        const btn15 = document.getElementById('btn15');
+        const btn16 = document.getElementById('btn16');
+
+        //math method button
+        const button1 = document.getElementById('button1');
+        
+
+        //string method button
+        const lenbtn = document.getElementById('lenbtn');
+        const charatbtn = document.getElementById('atbtn');
+        const charcodeatbtn = document.getElementById('charcodebtn');
+        
+        //input value get
+        const num = document.getElementById('num');
+        const number = document.getElementById('number');
+        const string_in = document.getElementById('inputValue');
+
+        
+        
+        function stringfunc(){
+            const string = string_in.value;
+            document.getElementById('show').textContent = string;
+            
+           
+        }
+        
+        let myarray = [];
+        function updatearray(){
+            const display = document.getElementById('display');
+             display.innerHTML = JSON.stringify(myarray);
+        }
+        
+        btn1.addEventListener('click',function(){
+            myarray.push(num.value);
+            num.value = '';
+            updatearray();
+        })
+
+        btn2.addEventListener('click',function(){
+            myarray.pop();
+            updatearray();
+        })
+
+        btn3.addEventListener('click', function(){
+            myarray.unshift(num.value);
+            num.value = '';
+            updatearray();
+        })
+
+        btn4.addEventListener('click',function(){
+            myarray.shift(num.value);
+            num.value = '';
+            updatearray();
+        })
+
+        btn5.addEventListener('click',function(){
+            const length = myarray.length;
+            document.getElementById('length').innerHTML = length;
+        })
+        
+        btn6.addEventListener('click',function(){
+            const sort = myarray.sort(function(a,b) {return a-b;});
+            document.getElementById('sort').innerHTML = sort;
+        });
+
+        btn7.addEventListener('click',function(){
+            const Reverse = myarray.reverse();
+            document.getElementById('reverse').innerHTML = Reverse;
+        })  
+        
+        btn8.addEventListener('click',function(){
+            const num_arr = myarray.map(Number);
+            const max = Math.max(...num_arr);
+            document.getElementById('max').innerHTML = max;
+        })  
+        
+        btn9.addEventListener('click',function(){
+            const num_arr = myarray.map(Number);
+            const min = Math.min(...num_arr);
+            document.getElementById('min').innerHTML = min;
+        })
+        
+        btn10.addEventListener('click',function(){
+           const find = myarray.indexOf(num.value);
+            document.getElementById('index').innerHTML = find;
+        })
+
+        btn11.addEventListener('click',function(){
+           const lastindex = myarray.lastIndexOf(num.value) ;
+            document.getElementById('LastIndexOf').innerHTML = lastindex;
+        })
+
+        btn12.addEventListener('click',function(){
+           const map = myarray.map((num) => num*2) ;
+            document.getElementById('map').innerHTML = map;
+        })
+        
+        btn13.addEventListener('click',function(){
+            const array = myarray.map(Number);
+            const reduce = array.reduce((x,y=0) => x + y) ;
+            document.getElementById('reduce').innerHTML = reduce;
+        })
+
+        btn14.addEventListener('click',function(){
+            const array = myarray.map(Number);
+            const filter = array.filter((x) => x % 2 == 0) ;
+            document.getElementById('filter').innerHTML = filter;
+        })
+
+        btn15.addEventListener('click',function(){
+            const entry = myarray.entries();
+            for(let x of entry){
+            document.getElementById('entry').innerHTML += x + '<br>';
+            }
+        })
+
+        btn16.addEventListener('click',function(){
+            myarray.splice(1,0,num.value);
+            document.getElementById('display').innerHTML = myarray;
+        });
+
+     
+        button1.addEventListener('click',function(){
+            document.getElementById('demo').innerHTML = Math.round(number.value);    
+        })
+
+        button2.addEventListener('click',function(){
+            document.getElementById('demo').innerHTML = Math.ceil(number.value);    
+        })
+
+        button3.addEventListener('click',function(){
+            document.getElementById('demo').innerHTML = Math.floor(number.value);    
+        })
+
+        button4.addEventListener('click',function(){
+            document.getElementById('demo').innerHTML = Math.trunc(number.value);    
+        })
+
+        lenbtn.addEventListener('click',function(){
+            const string_in = document.getElementById('inputValue').value;
+            document.getElementById('length').innerHTML = string_in.length;
+        })
+
+        charatbtn.addEventListener('click',function(){
+            const string = string_in.value;
+            document.getElementById('charat').innerHTML = string.charAt(0);
+        });
+
+        charcodeatbtn.addEventListener('click',function(){
+            const string = string_in.value;
+            document.getElementById('charcodeat').innerHTML = string.charCodeAt(0);
+
+        })
+       
+    </script>
+</html>

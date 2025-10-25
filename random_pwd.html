@@ -1,0 +1,91 @@
+ <html>
+
+   <style>
+ 
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+          
+            border: 2px solid #ccc;
+            width: fit-content;
+            height: fit-content;
+
+            
+        }
+        #length {
+            width: 60px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 1em;
+        }
+        #showtime{
+            margin-left: 20px;
+          
+            font-size: 1em;
+        }
+
+
+        </style>
+
+<body>
+    <div>
+        <h2>Generate Random Password</h2>
+        <label for="length">Password Length:</label>
+        <input type="number" id="length" value="6" min="4" max="32">
+        <button onclick="generatePassword()">Generate Password</button>
+        <h3>Your Password:</h3>
+        <p id="passwordDisplay" style="font-weight: bold; font-size: 1.2em;"></p>
+    </div>
+    <div id="countdown">
+       
+        <!-- <span id="days"></span>Days -->
+        <span id="hours"></span>Hour
+        <span id="minute"></span>Minutes
+        <span id="second"></span>Second
+    </div>
+</body>
+    <script>
+
+        
+
+
+        function generatePassword() {
+            const length = document.getElementById('length').value;
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$*";
+            let password = "";
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+            document.getElementById('passwordDisplay').innerText = password;
+        }
+
+        
+            const countdownDate = new Date("Oct 25, 2025 18:33").getTime();
+            const countdownFunction = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+    
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+                //document.getElementById("days").innerText = days + " ";
+                document.getElementById("hours").innerText = hours + " ";
+                document.getElementById("minute").innerText = minutes + " ";
+                document.getElementById("second").innerText = seconds + " ";
+    
+                if (distance < 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("countdown").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        
+
+            </script>
+</html>
+

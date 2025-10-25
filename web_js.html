@@ -1,0 +1,132 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <link rel="stylesheet" href="web_js.css">
+    <header>
+         <nav class="nav">
+
+            <div class="item">  
+              <i class="fa fa-paw" aria-hidden="true"></i> <b>PetMet</b>
+             
+            </div>
+            <div class="item"> 
+                <a href="#"> HOME</a>
+                <a href="#"> ABOUT</a>
+                <a href="#"> CONTACT</a>
+                <a href="#"> BLOG</a> 
+            </div>
+        </nav>  
+    </header>
+
+    <body>
+        <div id="hero">
+            <div class="hero-content">
+                <h1>Welcome to PetMet</h1>
+                <p>Trusted Pet Services - Anytime, Anywhere 🐾</p>
+               
+                <button id="showtb" onclick="load()">Show the table</button>
+            </div>
+        </div>
+        <div>
+            <h1 id="th1" align="center"> - SHOW THE DETAILS -</h1>
+            <table id="datatable">
+                
+                <div>
+                    <tr>
+                        <th>NO.</th>
+                        <th>NAME</th>
+                        <th>IMAGE</th>
+                        <th>PRICE</th>
+                        <th>QUANTITY</th>
+                        <th>TOTAL</th>
+                    </tr>
+                </div>
+                <tbody id="tbody"></tbody>
+            </table>
+           
+        </div>
+    </body>
+
+  <script>
+    function load() {
+    const services = [
+        { name: "Walking", price: 500, img: "photo1.jpg" },
+        { name: "Nail Trimming", price: 100, img: "photo2.jpg" },
+        { name: "Vaccination", price: 1000, img: "photo3.jpg" },{ name: "Vaccination", price: 1000, img: "photo3.jpg" }
+    ];
+
+    const tbody = document.getElementById("tbody");
+
+    tbody.innerHTML = services.map((item, index) => `
+        <tr>
+            <td>${index + 1}</td>
+            <td>${item.name}</td>
+            <td><img src="${item.img}" width="80" height="80"></td>
+            <td>${item.price}</td>
+            <td>
+                <div class="quantity-selector">
+                    <button class="decrementBtn"><i class="fa fa-minus"></i></button>
+                    <label class="quantityLabel">0</label>
+                    <button class="incrementBtn"><i class="fa fa-plus"></i></button>
+                </div>
+            </td>
+            <td><span class="total">0</span></td>
+        </tr> `).join("");
+       
+    document.getElementById("datatable").style.visibility = "visible";
+
+    document.querySelectorAll("#tbody tr").forEach((row, index) => {
+        const decrementBtn = row.querySelector(".decrementBtn");
+        const incrementBtn = row.querySelector(".incrementBtn");
+        const quantityLabel = row.querySelector(".quantityLabel");
+        const total = row.querySelector(".total");
+
+        let quantity = 0;
+
+        function updateTotal() {
+            total.textContent = (quantity * services[index].price).toFixed(2);
+        }
+
+        decrementBtn.addEventListener("click", () => {
+            if (quantity > 0) {
+                quantity--;
+                quantityLabel.textContent = quantity;
+                updateTotal();
+            }
+        });
+
+        incrementBtn.addEventListener("click", () => {
+            quantity++;
+            quantityLabel.textContent = quantity;
+            updateTotal();
+            
+        });
+    });
+
+    const table = document.getElementById("tbody");
+    
+    const data =[];
+    for(let i=0 ; i < table.rows.length;i++){
+        const row = table.rows[i];
+        const rowdata  = {};
+        rowdata.name = row.cells[1].innerHTML;
+        rowdata.price = row.cells[3].innerHTML;
+        rowdata.quantity = row.cells[4].innerHTML;
+        rowdata.total = row.cells[5].innerHTML;
+        data.push(rowdata);
+    }
+    //console.log(data);
+    sessionStorage.setItem('rowdata',JSON.stringify(data));
+}
+
+
+
+
+
+</script>
+
+
+   
+     
+</html>
