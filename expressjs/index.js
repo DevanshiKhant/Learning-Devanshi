@@ -17,12 +17,13 @@ app.get('/:id',(req,res) => {
     {
         res.json(user)
     }
+    else
+    {
+      res.status(404).send('User not found');
+    }
+
 
 })
-
-// app.get('/:id',(req,res)=>{
-//   res.send(`user ${req.params.id}`)
-// })
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`)
