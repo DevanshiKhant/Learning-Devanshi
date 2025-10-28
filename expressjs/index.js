@@ -3,8 +3,6 @@ const app = express()
 const  data = require('./data.json')
 const port = 3000
 
-
-
 app.get('/findall', (req, res) => {
   const userall = data;
   res.json({meassage : "all user are found" , user : userall});
