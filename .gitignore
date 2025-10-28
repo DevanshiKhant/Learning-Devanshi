@@ -3,3 +3,5 @@ expressjs/package-lock.json
 expressjs/package.json
 example_prog.js
 
+node/node_modules
+node/package-lock.json
