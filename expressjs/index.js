@@ -11,18 +11,18 @@ app.get('/findall', (req, res) => {
 });
 
 app.get('/:id',(req,res) => {
-    const userId = parseInt(req.params.id);
-    const user = data.find(u =>userId === userId);
+    const id = parseInt(req.params.id);
+    const user = data.find(u =>u.id === id);
     if(user)
     {
         res.json(user)
     }
-    else
-    {
-        console.log("user not found");
-    }
+
 })
 
+// app.get('/:id',(req,res)=>{
+//   res.send(`user ${req.params.id}`)
+// })
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`)
