@@ -5,3 +5,4 @@ example_prog.js
 
 node/node_modules
 node/package-lock.json
+node/middleware.js
