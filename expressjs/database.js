@@ -24,7 +24,7 @@ connection.connect(err => {
 
 const tableName = 'master';
 const databaseName = 'mydb'; 
-const sql = 'select id,username,firstname,lastname,gender from master ';
+const sql = 'select id,username,firstname,lastname,gender from master';
 
   connection.query(  `SHOW TABLES LIKE ?`, [tableName],(error, results, fields) => {
             if (error) {
@@ -49,21 +49,49 @@ const sql = 'select id,username,firstname,lastname,gender from master ';
                   });
             
             }
-        });
+          });
+          
+          
+          
+          app.get('/insert', (req, res) => {
+            const sql = 'INSERT INTO master (username,firstname,lastname,gender,password,status) VALUES ("cooper77", "michael", "maria", "Male", "101faf06bcf8140ead914fbe116c941a", 0)';
+            connection.query(sql, (err, result) => {
+              if (err) {
+                console.error('Error inserting data:', err);
+                return res.status(500).json({ error: 'Failed to insert item.' });
+              }
+              res.status(201).json({ message: 'Item added successfully', id:insertId });
+            });
+          });
 
+          app.get('/select' , (req,res) => {
+            connection.query(sql,(err,result) => {
+               if(err){
+                      console.error('Error selecting data:' ,err);
+          
+                      return res.status(500).json({error:'failed select the item '});
+                    }
+                    res.json(result)
+                  });
+            });
+          
+          
+          app.get('/select-page/:page' ,(req,res) => {
+              const page = parseInt( req.params.page);
+              const limit = parseInt(req.query.limit) || 10;
+              const offset = (page - 1) * limit;
 
+              const sql = 'select id,username,firstname,lastname,gender from master LIMIT ? OFFSET ?';
 
-app.get('/insert', (req, res) => {
-  const sql = 'INSERT INTO master (username,firstname,lastname,gender,password,status) VALUES ("cooper77", "michael", "maria", "Male", "101faf06bcf8140ead914fbe116c941a", 0)';
-  connection.query(sql, (err, result) => {
-    if (err) {
-      console.error('Error inserting data:', err);
-      return res.status(500).json({ error: 'Failed to insert item.' });
-    }
-    res.status(201).json({ message: 'Item added successfully', id:insertId });
-  });
-});
-
+              connection.query(sql,[limit,offset], (err ,result) => {
+                  if(err){
+                      console.error('Error selecting data:' ,err);
+          
+                      return res.status(500).json({error:'failed select the item '});
+                    }
+                    res.json(result)
+                  });
+          });
 
 
 app.get('/status/0' ,(req,res) => {
@@ -161,16 +189,6 @@ const sql = 'select id,username,firstname,lastname,gender,status from master whe
     });
   });
   
-  app.get('/select' ,(req,res) => {
-      connection.query(sql , (err ,result) => {
-          if(err){
-              console.error('Error selecting data:' ,err);
-  
-              return res.status(500).json({error:'failed select the item '});
-            }
-            res.json(result)
-          });
-  });
 
   
 app.listen(port, () => {
