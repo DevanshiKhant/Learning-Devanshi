@@ -1,0 +1,22 @@
+[
+  {
+    
+    "id": 1,
+    "name": "john",
+    "task-completed": false,
+    "hobbies":["playing","dancing"]
+  },
+  {
+    "id": 2,
+    "name": "harshil",
+    "task-completed": false,
+    "hobbies":["coding","designing"]
+  },
+  {
+    "id": 3,
+    "name": "harsh",
+    "task-completed": false,
+    "hobbies":["coding","cooking"]
+
+  }
+]
