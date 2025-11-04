@@ -1,9 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable  } from '@nestjs/common';
 import { catdto } from './cat/dto/update.dto';
 
 @Injectable()
 export class AppService {
   
+  getHello(){
+    return 'this return hello'
+  }
 
   private cats = [
     {
@@ -42,6 +45,16 @@ export class AppService {
      });
 
     return this.getcats(id);
+  }
+
+  remove(id: number){
+    const length = this.cats.length;
+    this.cats = this.cats.filter((cats) => cats.id !== id)
+     if(this.cats.length == length)
+        {
+          throw new Error("id not found");
+        }
+      return `User with ID ${id} removed successfully`;
   }
 
 }
