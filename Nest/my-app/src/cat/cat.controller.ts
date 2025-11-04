@@ -1,7 +1,9 @@
-import { Controller , Get, Param, Post ,NotFoundException, Redirect,Body, Delete } from '@nestjs/common';
+import { Controller , Get, Param, Post ,NotFoundException, Redirect,Body, Delete, UseFilters } from '@nestjs/common';
+import {customexception } from './exception/custom_exception.filter';
 import { AppService } from 'src/app.service';
 import { catdto } from './dto/update.dto';
 
+@UseFilters(customexception)
 @Controller('cat')
 export class CatController {
     constructor(private readonly appService: AppService) {}
@@ -32,3 +34,5 @@ export class CatController {
         }
         
 }
+
+
