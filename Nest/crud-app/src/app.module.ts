@@ -13,7 +13,7 @@ import { user } from './user/user.entity';
       database:'mydb',
       entities:[],
       autoLoadEntities:true,
-      synchronize:true
+      synchronize:false
   }),
   UserModule,
 ],
