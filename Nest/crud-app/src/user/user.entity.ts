@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { userdetail } from "./userdetail.entity";
 
 @Entity('users')
 export class user {
@@ -26,4 +27,9 @@ export class user {
 
         @Column()
         status:number;
+
+        @ManyToOne(() => userdetail , details => details.users)
+        details:userdetail;
+       
+
 }

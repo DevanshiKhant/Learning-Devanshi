@@ -5,13 +5,13 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from './createuser.dto';
 
 
-
 @Injectable()
 export class UserService {
 
     constructor(
         @InjectRepository(user)
-        private readonly usersrepository:Repository<user>
+        private readonly usersrepository:Repository<user>,
+
     ){}
 
     create(createUserDto: CreateUserDto): Promise<user> {
@@ -23,7 +23,7 @@ export class UserService {
     users.age = createUserDto.age;
     users.gender = createUserDto.gender;
     users.status = createUserDto.status;
-
+    
     return this.usersrepository.save(users);
   }
 

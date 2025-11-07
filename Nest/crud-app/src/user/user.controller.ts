@@ -19,7 +19,8 @@ export class UserController {
   findAll(){
     return this.userservice.findAll();
   }
-  
+
+    
   //apply on filter gender , age and status 
   @Get('/filter')
    filter(@Query() queryparams: any){
