@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { userdetail } from "./userdetail.entity";
 
 @Entity('users')
@@ -29,7 +29,7 @@ export class user {
         status:number;
 
         @ManyToOne(() => userdetail , details => details.users)
-        details:userdetail;
-       
+        details : userdetail[]
+     
 
 }

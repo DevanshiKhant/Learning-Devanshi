@@ -1,4 +1,4 @@
-import { Entity  ,PrimaryGeneratedColumn  ,Column, OneToOne, ManyToOne, JoinColumn} from "typeorm";
+import { Entity  ,PrimaryGeneratedColumn  ,Column, OneToOne, ManyToOne, JoinColumn, OneToMany} from "typeorm";
 import { user } from "./user.entity";
 
 
@@ -16,9 +16,7 @@ export class userdetail{
     @Column()
     state:string;
 
-    @ManyToOne(() => user, users => users.details)
-    users:user[]
-    @JoinColumn()
-    userid:number;
+    @OneToMany(() => user, users => users.details)
+    users:user;
 
 }
