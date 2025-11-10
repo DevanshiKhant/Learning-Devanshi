@@ -1,82 +1,91 @@
-import { Injectable ,NotFoundException  } from '@nestjs/common';
+import { Body, Injectable ,NotFoundException  } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { user } from './user.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './createuser.dto';
-
+import { updateUsersDto } from './updateuserdto.dto';
+import { userdetail } from 'src/userdetail/userdetail.entity';
+import { CreateUserwithdetailDto } from 'src/userdetail/create-userwithdetaildto.dto';
 
 @Injectable()
 export class UserService {
 
     constructor(
-        @InjectRepository(user)
-        private readonly usersrepository:Repository<user>,
+        @InjectRepository(user) private readonly usersrepository:Repository<user>,
+        @InjectRepository(userdetail) private readonly userdetailrepository:Repository<userdetail>){}
 
-    ){}
 
-    create(createUserDto: CreateUserDto): Promise<user> {
-    const users = new user();
-    users.email = createUserDto.email;
-    users.password = createUserDto.password;
-    users.firstname = createUserDto.firstname;
-    users.lastname = createUserDto.lastname;
-    users.age = createUserDto.age;
-    users.gender = createUserDto.gender;
-    users.status = createUserDto.status;
-    
-    return this.usersrepository.save(users);
-  }
-
-  async findAll(){
-    return this.usersrepository.find();
-  }
-
-  async findOne(id: number): Promise<user> {
-    const user = await this.usersrepository.findOne({ where : {id }, relations :['details'] });
-    if (!user) {
-        throw new NotFoundException(`User with ID ${id} not found`);
+   async create(createUserDto :CreateUserDto){
+      const User = await this.usersrepository.create(createUserDto);
+      console.log(User)
+      return this.usersrepository.save(User);
     }
-    return user;
-  }
 
-  async update(id: number, user:user){
-     await this.usersrepository.update(id,user);
-      return this.findOne(id);
-  }
-    
-  async remove (id:number){
+    createuserwithdetail(CreateuserwithdetailDto: CreateUserwithdetailDto): Promise<user> {
+        const users = this.usersrepository.create({
+            email: CreateuserwithdetailDto.email,
+            password:CreateuserwithdetailDto.password,
+            status: CreateuserwithdetailDto.status,
+            details: {
+                  firstname: CreateuserwithdetailDto.details.firstname,
+                  lastname: CreateuserwithdetailDto.details.lastname ,
+                  mobileno: CreateuserwithdetailDto.details.mobileno,
+                  gender:  CreateuserwithdetailDto.details.gender ,
+                  city:  CreateuserwithdetailDto.details.city
+             }
+        })    
+        return this.usersrepository.save(users);
+    }
+
+   
+    async findAll(){
+     return this.usersrepository.find();
+    }
+
+    async findone(id: number): Promise<user> {
+      const user = await this.usersrepository.findOne({ where : {id }, relations :['details'] });
+      if (!user) {
+      throw new NotFoundException(`User with ID ${id} not found`);
+       }
+      return user;
+   }
+
+    async update(id: number,updateuserdto:updateUsersDto){
+        const user = await this.usersrepository.findOne({ where: { id }, relations: ['details'] });
+        if (!user) throw new NotFoundException('User not found');
+        
+          if (updateuserdto.email) user.email = updateuserdto.email;
+          if (updateuserdto.password) user.password =  updateuserdto.password;
+          if (updateuserdto.status) user.status =  updateuserdto.status;
+        
+          if (updateuserdto.details) {
+              if (!user.details) {
+                user.details = this.userdetailrepository.create(updateuserdto.details);
+              } 
+              else {
+                if (updateuserdto.details.firstname) user.details.firstname = updateuserdto.details.firstname;
+                if (updateuserdto.details.lastname) user.details.lastname = updateuserdto.details.lastname;
+                if (updateuserdto.details.mobileno) user.details.mobileno = updateuserdto.details.mobileno;
+                if (updateuserdto.details.gender) user.details.gender = updateuserdto.details.gender;
+                if (updateuserdto.details.city) user.details.city = updateuserdto.details.city;
+              }
+        }
+        return await this.usersrepository.save(user);
+    }
+   
+    async remove (id:number){
       await this.usersrepository.delete(id);
+      await this.userdetailrepository.delete(id);
       return `User id ${id} is deleted`;
-  }
+    }
 
-  filter(gender : string ,age ?: number,status ?: number){
-      const query = this.usersrepository.createQueryBuilder('user');
+    filter(gender : string){
+      const query = this.userdetailrepository.createQueryBuilder('userdetail');
       
       console.log(query);
       if(gender){
-        query.where('user.gender = :gender', {gender})
+        query.where('userdetail.gender = :gender', {gender})
       }
-      
-      if(age){
-        if(age < 18) {
-          query.andWhere('user.age < :age' , {age:  18})
-        }
-        else if(age > 18){
-          query.andWhere('user.age  > :age' , {age : 18})
-        }
-        else{
-          query.andWhere('user.age  = :age' , {age : 18})  
-        }
-      }
-      
-      if(status === 1){
-       
-            query.andWhere('user.status = :status', {status : 1})
-        }
-        else{
-            query.andWhere('user.status = :status', {status : 0})
-            
-        }
-        return query.getOne();
-      }
+        return query.getMany();
+    }
 }

@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { userdetail } from "./userdetail.entity";
+import { userdetail } from "src/userdetail/userdetail.entity";
 
 @Entity('users')
 export class user {
@@ -13,23 +13,9 @@ export class user {
         password:number;
 
         @Column()
-        firstname:string;
-
-        @Column()
-        lastname:string;
-
-
-        @Column()
-        age:number;
-
-        @Column()
-        gender:string;
-
-        @Column()
         status:number;
 
-        @ManyToOne(() => userdetail , details => details.users)
-        details : userdetail[]
-     
-
+        @ManyToOne(() => userdetail , (details) => details.users , { cascade: true, eager: true })
+        @JoinColumn()
+        details : userdetail;
 }
