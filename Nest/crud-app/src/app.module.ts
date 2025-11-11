@@ -5,6 +5,7 @@ import { user } from './user/user.entity';
 import { userdetail } from 'src/userdetail/userdetail.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserdetailModule } from 'src/userdetail/userdetail.module';
+import { UserRolesController } from './guards/role-based auth/user-role.controller';
 
 @Module({
    imports:[
@@ -26,7 +27,8 @@ import { UserdetailModule } from 'src/userdetail/userdetail.module';
    }),
    UserModule,
    UserdetailModule,
+
 ],
- 
+controllers:[UserRolesController],
 })
 export class AppModule {}
