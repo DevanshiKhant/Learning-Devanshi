@@ -14,13 +14,13 @@ export class UserRolesController {
     }
 
 
-    @Get()
+    @Get('/user')
     getUserData(){
         return { message: 'Anyone can access'}
 
     }
 
-    @Get()
+    @Get("/simple")
     @UseGuards(AuthGuard)
     getData(){
         return { message: 'simple Authorization'}
