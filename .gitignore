@@ -6,3 +6,15 @@ example_prog.js
 node/node_modules
 node/package-lock.json
 node/middleware.js
+
+Nest/crud-app/node_modules
+Nest/crud-app/dist
+Nest/crud-app/.env
+Nest/crud-app/package-lock.json
+
+Nest/my-app/dist
+Nest/my-app/node_modules
+Nest/my-app/package-lock.json
+
+Nest/typescript/node_modules
+Nest/typescript/package-lock.json
