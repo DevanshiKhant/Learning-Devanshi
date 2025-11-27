@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  todos : [{id : 1 , text : "First task"}]
+  todos : [ ]
 };
 
 export const todoslice = createSlice({
